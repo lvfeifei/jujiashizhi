@@ -14,7 +14,6 @@ return [
     "expert_name" => '照护专家',
     //腾讯云桶 乘木
     //"tencent" => [
-    //    'accessKeyId'=>'AKIDKUP5aqrc7NRGqBH8j5B1cx3tTotiIchX',
     //    'accessKeySecret'=>'dT5SZQ2PWNzLRHsDJ9k8IDsIVSAcuzoO',
     //    'endpoint'=>'https://jujiashizhi-1258884793.cos.ap-beijing.myqcloud.com',
     //    'oss_bucket'=>'jujiashizhi-1258884793',
@@ -22,7 +21,6 @@ return [
     //],
     //国投
     "tencent" => [
-        'accessKeyId'=>'AKIDRkvsb6MOBj5CHp9IEwPluoTs3z83kDST',
         'accessKeySecret'=>'OeiX8Zm59zby60f5IH2YGjy1pOq55qMe',
         'endpoint'=>'https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com',
         'oss_bucket'=>'jujiashizhi-1315324619',
