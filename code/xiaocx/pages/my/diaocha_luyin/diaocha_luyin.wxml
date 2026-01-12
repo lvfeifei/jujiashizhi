@@ -1,0 +1,109 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">
+
+        <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+            <image class="flex_left_icon" src="/static/images/header_right_icon.png" />
+        </view>
+
+        <view class="my_title">失智关爱研究调查</view>
+    </view>
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> </view>
+
+    <view class="project_list_box">
+
+        <view class="anli_list_box">
+
+            <view class="anli_item_box" bindtap="open_dialog" wx:for="{{scenes_list}}" wx:key="id" data-scenes_id="{{item.scenes_id}}">
+                <image class="anli_img" src="{{item.scenes_img}}" alt="" />
+                <view class="anli_mask"></view>
+                <view class="ali_text">{{item.scenes_title}}</view>
+                <view class="cj_label">{{item.scenes_text}}</view>
+
+                <button class="btn_clean  cj_btn_box cj_position" wx:if="{{(item.scenes_id == 1 && scenes_one) || (item.scenes_id == 2 && scenes_two) || (item.scenes_id == 3 && scenes_three) || (item.scenes_id == 4 && scenes_four) || (item.scenes_id == 5 && scenes_five)}}">
+                    <image class="btn_img" src="/static/images/success_icon.png" alt="" />
+                    <text class="cj_btn_text">完成</text>
+                </button>
+
+                <button class="btn_clean  cj_btn_box cj_position" wx:else>
+                    <image class="btn_img" src="/static/images/luzhi_icon.png" alt="" />
+                    <text class="cj_btn_text">录制</text>
+                </button>
+
+            </view>
+
+
+
+        </view>
+
+    </view>
+
+    <view class="btn_group_wrpaer">
+        <view class="btn_group_box">
+            <button class="btn_clean btn_common btn_1" bindtap="go_back" hover-class="btn_hover">上一题</button>
+            <button class="btn_clean btn_common btn_2" bindtap="go_next" hover-class="btn_hover">提交</button>
+        </view>
+    </view>
+
+    <dialog wx:if="{{show_dialog}}" bind:close="close">
+        <view class="dialog_content">
+            <view class="dialog_title"> 请录制2-10分钟的音频 </view>
+            <view class="dialog_tip"> {{show_dialog_title}} </view>
+
+            <!-- 开始录制 -->
+            <view class="luzhi_box" wx:if="{{step == 1}}">
+                <view class="start_text color_grey">00:00</view>
+                <button hover-class="btn_hover" class="btn_clean  cj_btn_box start_btn" bindtap="start_luzhi">
+                    <image class="btn_img" src="/static/images/luzhi_icon.png" alt="" />
+                    <text class="cj_btn_text">开始录制</text>
+                </button>
+            </view>
+
+            <!-- 完成录制 -->
+            <view class="luzhi_box" wx:if="{{step == 2}}">
+                <view class="start_text color_black">{{recording_time}}</view>
+                <button hover-class="btn_hover" class="btn_clean  cj_btn_box wclz_btn" bindtap="wancheng_luyin">
+                    <image class="btn_img" src="/static/images/wclz_icon.png" alt="" />
+                    <text class="cj_btn_text  wclz_text">完成录制</text>
+                </button>
+            </view>
+
+            <!-- 播放暂停 -->
+            <view class="luzhi_box" wx:if="{{step == 3}}">
+
+                <view class="play_box">
+                    <view class="start_tiem">{{play_time}}</view>
+                    <slider class="slider_item" block-size="12" disabled="true" bindchange="slider2change" min="1" step="1" value="{{play_sec}}" max="{{total_time}}" activeColor="#E01C1B" background-color="#E3E3E3" block-color="#D91121" />
+                    <view class="end_tiem">{{recording_time}}</view>
+                </view>
+
+                <view class="btn_group d_flex">
+
+                    <button hover-class="btn_hover" class="btn_clean  cj_btn_box ztcl_btn_two mr30" wx:if="{{play_status == 2}}" bindtap="parse_music">
+                        <!-- <image class="btn_img" src="/static/images/zt_icon.png" alt=""/> -->
+                        <text class="cj_btn_text  wclz_text">暂停</text>
+                    </button>
+
+                    <button hover-class="btn_hover" class="btn_clean  cj_btn_box ztcl_btn_two mr30 bg_red" wx:if="{{play_status == 1}}" bindtap="play_music">
+                        <!-- <image class="btn_img" src="/static/images/bf_icon.png" alt=""/> -->
+                        <text class="cj_btn_text  wclz_text color_white">播放</text>
+                    </button>
+                    <button hover-class="btn_hover" class="btn_clean  cj_btn_box ztcl_btn_two mr30" bindtap="reset_luzhi">
+                        <!-- <image class="btn_img" src="/static/images/cl_btn.png" alt=""/> -->
+                        <text class="cj_btn_text  wclz_text">清空重录</text>
+                    </button>
+
+                    <button hover-class="btn_hover" wx:if="{{success_url_item == ''}}" class="btn_clean  cj_btn_box ztcl_btn_two bg_red" bindtap="confirm_btn">
+                        <text class="cj_btn_text  wclz_text color_white">完成</text>
+                    </button>
+
+                </view>
+
+            </view>
+
+        </view>
+    </dialog>
+
+
+</view>

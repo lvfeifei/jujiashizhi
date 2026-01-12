@@ -1,0 +1,46 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top pl30 {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>    -->
+      <view class="my_title">失智关爱研究调查</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+
+      <view class="dc_title">尊敬的先生/女士： </view>
+      <view class="dc_content">您好！感谢您使用我们的居家失智照护辅助系统。邀请您填写《家庭态度量表》并录制不同照护场景的语音对话，有助于我们进一步了解及分析您遇到的照护问题，为您提供更好的帮助。</view>
+      
+        <view class="content_list_box">
+          <view class="cp_box d_flex">
+
+             <view class="dc_item_box">
+                <image class="dc_item_icon" src="/static/images/jttd_icon.png" /> 
+                <view class="dc_item_text">家庭态度表</view>
+             </view>
+
+             <image class="line_icon" src="/static/images/line_icon.png" /> 
+
+             <view class="dc_item_box">
+                <image class="dc_item_icon" src="/static/images/yydh_icon.png" /> 
+                <view class="dc_item_text">语音对话</view>
+             </view>
+              
+          </view>  
+        </view>
+
+
+        <view class="btn_box">
+          <button class="btn_clean btn_common btn_2" bindtap="go_start" hover-class="btn_hover">开始</button>
+          <button class="btn_clean btn_common btn_1" bindtap="go_index" hover-class="btn_hover">不参加，回到首页</button> 
+        </view>
+
+ 
+    </view>
+
+  </view> 

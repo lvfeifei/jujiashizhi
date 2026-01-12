@@ -1,0 +1,42 @@
+<template>
+    <div id="subpage">
+        <el-col :span="24" class="warp-breadcrum">
+            <el-breadcrumb separator="/">
+                <el-breadcrumb-item><b>基础</b></el-breadcrumb-item>
+                <el-breadcrumb-item>空间问题</el-breadcrumb-item>
+            </el-breadcrumb>
+        </el-col>
+        <div class="content">
+            <div class="xcx-head">
+                <div style="display: flex">
+                    <el-input class="font14" style="width:240px;" placeholder="按问题名称搜索" v-model="key" clearable></el-input>
+                    <el-button class="hollow_out mar_L_10" @click="search()" plain>确认</el-button>
+                </div>
+                <span class="xcx-add left font14" @click="add()">新增问题</span>
+            </div>
+            <div class="xcx-content">
+                <!--列表-->
+                <el-table border :data="tableData" stripe style="width: 100%">
+                    <el-table-column prop="id" label="序号"></el-table-column>
+                    <el-table-column prop="name" label="问题名称"></el-table-column>
+                    <el-table-column prop="falw_name" label="缺陷名称"></el-table-column>
+                    <el-table-column prop="region_id" label="关联空间"></el-table-column>
+                    <el-table-column prop="label_id" label="关联标签"></el-table-column>
+                    <el-table-column label="操作">
+                        <div slot-scope="scope" class="doSonimg_box font14">
+                            <span class="text primary" @click="edit(scope.row.id)">编辑</span>
+                            <span class="text danger" @click="del_item(scope.row.id)">删除</span>
+                        </div>
+                    </el-table-column>
+                </el-table>
+                <!--分页-->
+                <div class="paging">
+                    <el-pagination class="left" @current-change="handleCurrentChange" :current-page="page" background layout="prev, pager, next" :total="count"></el-pagination>
+                    <span class="demonstration left">共 {{ count }} 条 每页10条</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script type="text/javascript" src="../../../static/js/base/space_problem.js"></script>

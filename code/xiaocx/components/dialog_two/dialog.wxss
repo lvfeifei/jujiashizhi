@@ -1,0 +1,32 @@
+/* components/dialog/dialog.wxss */
+
+.dialog_page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 150rpx;
+  background: rgba(0, 0, 0, .3);
+  z-index: 999;
+  display: flex;
+  flex-direction: column; 
+}
+
+.dialog_top {
+  flex: 1
+}
+
+.dialog_bottom {
+  background-color: #fff;
+  padding: 30rpx;
+  position: relative;
+  border-radius: 30rpx 30rpx 0 0;
+}
+
+.close_icon {
+  position: absolute;
+  width: 60rpx;
+  height: 60rpx;
+  top: 20rpx;
+  right: 20rpx;
+}

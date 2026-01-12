@@ -1,0 +1,211 @@
+<wxs module="filters" src="../../../wxs/filter.wxs"></wxs>
+ <view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>  
+
+      <view class="my_title">患者信息</view> 
+    </view> 
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;">
+      <view class="header_inner_box">
+        <view class="header_title">本系统尚处研发阶段，面向居家失智老人的照护者及长期照护机构无偿使用</view>  
+      </view>
+    </view>
+
+
+    <view class="project_list_box">
+      <view class="tab_menu_box">  
+        <view class="tab_menu_item" >患者基本信息</view>   
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">1. 患者性别</view>
+          <view class="answer_box">
+            <view class="anwer_check_item  {{hz_sex == 'L1' ? 'active' : ''}}" bindtap="change_hz_sex" data-hz_sex='L1'>
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />    男 </view>
+            <view class="anwer_check_item   {{hz_sex == 'L2' ? 'active' : ''}} "  bindtap="change_hz_sex" data-hz_sex='L2'> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 女</view> 
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">2. 患者年龄</view>
+          <view class="answer_box">
+             <view class="input_item_box d_flex">
+                  <input class="input_box" maxlength="3" value="{{hz_age}}" bindinput="change_hz_age" type="number" placeholder="请填写年龄"/>
+                  <text class="input_tip_text">岁</text>
+             </view>
+
+          </view>
+      </view>
+ 
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">3. 教育程度</view>
+          <view class="answer_box">
+             <view class="input_item_box d_flex">
+                <picker bindchange="bind_hz_xueli_change" value="{{hz_xueli_index}}" range="{{hz_xueli}}" range-key="name" class="picker_item_box d_flex">
+                      <view class=" picker_width picker_item_check" wx:if="{{hz_xueli_index != '999' }}"> {{hz_xueli[hz_xueli_index].name}} </view> 
+                      <view class="goods_item_text picker_width"  wx:else>请选择教育程度</view>
+                      <image class="down_jt_icon" src="/static/images/down_jt_icon.png" />   
+                </picker>   
+  
+             </view> 
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">4. 疾病类型</view>
+          <view class="answer_box">
+             <view class="input_item_box d_flex">
+                <picker bindchange="bind_hz_jibing_change" value="{{hz_jibing_index}}" range="{{hz_jibing}}" range-key="name"   class="picker_item_box d_flex">
+                      <view class=" picker_width picker_item_check" wx:if="{{hz_jibing_index != '999'}}"> {{hz_jibing[hz_jibing_index].name}} </view>
+                      <view class="goods_item_text picker_width"  wx:else>请选择患者的疾病类型</view>
+                      <image class="down_jt_icon" src="/static/images/down_jt_icon.png" />   
+                </picker> 
+  
+             </view> 
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">5. 病情严重程度</view>
+          <view class="answer_box">
+            <view class="anwer_check_item  {{hz_yzcd == 'P1' ? 'active' :''}}" style="width: 32%;" bindtap="change_hz_yzcd" data-hz_yzcd="P1">
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />   
+               轻度
+            </view>
+            <view class="anwer_check_item  {{hz_yzcd == 'P2' ? 'active' :''}} " style="width: 32%;margin-right: 2%;" bindtap="change_hz_yzcd" data-hz_yzcd="P2"> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+              中度
+            </view> 
+
+            <view class="anwer_check_item  {{hz_yzcd == 'P3' ? 'active' :''}}" style="width: 32%;margin-right: 0;" bindtap="change_hz_yzcd" data-hz_yzcd="P3"> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+              重度
+            </view> 
+
+          </view> 
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">6. 确诊前的兴趣爱好（可多选）</view>
+          <view class="answer_box">
+ 
+            <view class="anwer_check_item hobby_item {{filters.exits_arr(hz_hobby,item.id) ? 'active' : ''}}"  bindtap="hoddy_click" data-item="{{item.id}}" wx:for="{{hz_hobby_list}}" wx:key="id"  >     
+              <image class="check_icon_2 " src="/static/images/check_icon_2.png" />   {{item.name}}  
+            </view> 
+           
+            <!-- <view class="anwer_check_item hobby_item"  style="width: 100%; margin-right: 0; margin-top: 30rpx;">  <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 唱歌/唱戏/听音乐/听戏/演奏乐器</view>  
+            <view class="anwer_check_item hobby_item " style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 跳舞/健美操/八段锦/打太极/练气功</view> 
+            <view class="anwer_check_item hobby_item" style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 散步/慢跑/爬山/打球/游泳/旅游</view> 
+            <view class="anwer_check_item " style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" />绘画/书法/写作/阅读</view> 
+            <view class="anwer_check_item " style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" />养花草植物</view> 
+            <view class="anwer_check_item " style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" />养宠物</view> 
+            <view class="anwer_check_item " style="width: 100%; margin-right: 0; margin-top: 30rpx;">   <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 棋牌/益智游戏/电动游戏</view>  -->
+ 
+            <textarea class="text_area_box" value="{{hz_auther_hobby}}"  maxlength="100"  bindinput="change_hz_auther_hobby"  placeholder="请输入其他爱好"></textarea> 
+
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">7. 行走能力</view>
+          <view class="answer_box">
+            <view class="anwer_check_item {{hz_xznl == 'R1' ?  'active' : ''}}" bindtap="change_hz_xznl" data-hz_xznl="R1" style="height: 160rpx;display: flex;align-items: center;justify-content: center;">
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />   可以正常行走
+            </view>
+            <view class="anwer_check_item {{hz_xznl == 'R2' ?  'active' : ''}}"  bindtap="change_hz_xznl" data-hz_xznl="R2"  style="height: 160rpx;padding:15rpx;line-height:60rpx;"> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+              自行使用拐杖、助步器、轮椅</view> 
+              <view class="anwer_check_item {{hz_xznl == 'R3' ?   'active' : ''}} " bindtap="change_hz_xznl" data-hz_xznl="R3"  style="height: 160rpx;padding:24rpx 46rpx;line-height: 50rpx;"> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+              使用轮椅且需要帮助</view> 
+              <view class="anwer_check_item {{hz_xznl == 'R4' ?  'active' : ''}}"  bindtap="change_hz_xznl" data-hz_xznl="R4"  style="height: 160rpx;display: flex;align-items: center;justify-content: center;"> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+              完全卧床</view> 
+          </view>
+      </view>
+ 
+      <view class="tab_menu_box zgz_box zhz_message">  
+        <view class="tab_menu_item" >照护者基本信息</view>   
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">1. 您的性别</view>
+          <view class="answer_box">
+            <view class="anwer_check_item  {{zhz_sex == 'S1' ? 'active' : ''}}" bindtap="change_zhz_sex" data-zhz_sex='S1'>
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />    男
+            </view>
+            <view class="anwer_check_item {{zhz_sex == 'S2' ? 'active' : ''}}" bindtap="change_zhz_sex" data-zhz_sex='S2'> 
+              <image class="check_icon_2" src="/static/images/check_icon_2.png" />
+             女</view> 
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">2. 您的年龄</view>
+          <view class="answer_box">
+             <view class="input_item_box d_flex">
+                  <input class="input_box" maxlength="2" value="{{zhz_age}}"   bindinput="change_zhz_age" type="number" placeholder="请填写年龄"/>
+                  <text class="input_tip_text">岁</text>
+             </view>
+
+          </view>
+      </view>
+ 
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">3. 教育程度</view>
+          <view class="answer_box">
+             <view class="input_item_box d_flex">
+                <picker bindchange="bind_zhz_xueli_change" value="{{zhz_xueli_index}}" range="{{hz_xueli}}" range-key="name" class="picker_item_box d_flex">
+                      <view class=" picker_width picker_item_check" wx:if="{{zhz_xueli_index != '999'}}"> {{hz_xueli[zhz_xueli_index].name}} </view>
+                      <view class="goods_item_text picker_width"  wx:else>请选择教育程度</view>
+                      <image class="down_jt_icon" src="/static/images/down_jt_icon.png" />   
+                </picker> 
+             </view> 
+          </view>
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">4. 照护年限</view>
+          <view class="answer_box">
+            <view class="anwer_check_item {{zhz_year == 'V1' ? 'active' : ''}}" bindtap="change_zhz_year" data-year="V1"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />  {{'<'}} 1年  </view>
+            <view class="anwer_check_item {{zhz_year == 'V2' ? 'active' : ''}}" bindtap="change_zhz_year" data-year="V2"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />  1-2年 </view> 
+            <view class="anwer_check_item {{zhz_year == 'V3' ? 'active' : ''}}" bindtap="change_zhz_year" data-year="V3"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />  {{'>'}} 2-4年 </view> 
+            <view class="anwer_check_item {{zhz_year == 'V4' ? 'active' : ''}}" bindtap="change_zhz_year" data-year="V4"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />   {{'>'}} 4年 </view> 
+          </view> 
+      </view>
+
+      <view class="common_bg_box quest_item">
+          <view class="qust_title">5. 与患者关系</view>
+          <view class="answer_box">
+            <view class="anwer_check_item {{zhz_gx == 'W1' ? 'active' : ''}}" bindtap="change_zhz_gx" data-gx="W1">  <image class="check_icon_2" src="/static/images/check_icon_2.png" />配偶</view>
+            <view class="anwer_check_item {{zhz_gx == 'W2' ? 'active' : ''}}" bindtap="change_zhz_gx" data-gx="W2"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />子女</view> 
+            <view class="anwer_check_item {{zhz_gx == 'W3' ? 'active' : ''}}" bindtap="change_zhz_gx" data-gx="W3"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />媳婿</view> 
+            <view class="anwer_check_item {{zhz_gx == 'W4' ? 'active' : ''}}" bindtap="change_zhz_gx" data-gx="W4"> <image class="check_icon_2" src="/static/images/check_icon_2.png" />其他</view> 
+          </view> 
+      </view>
+ 
+      <view class="common_bg_box quest_item">
+          <view class="qust_title"> 6. 与患者同住 </view>
+          <view class="answer_box">
+            <view class="anwer_check_item {{zhz_room == 'X1' ? 'active' : ''}}" bindtap="change_zhz_room" data-room="X1"> <image class="check_icon_2" src="/static/images/check_icon_2.png" /> 是  </view>
+            <view class="anwer_check_item {{zhz_room == 'X2' ? 'active' : ''}}" bindtap="change_zhz_room" data-room="X2"><image class="check_icon_2" src="/static/images/check_icon_2.png" /> 否 </view>  
+          </view> 
+      </view>
+     
+ </view>
+
+  <view class="btn_group_wrpaer">
+      <view class="btn_group_box">  
+        <button hover-class="btn_hover" wx:if="{{authorization == 0 }}"    bindtap="new_login" class='btn_clean btn_common btn_2'>保存</button>  
+        <!-- <button  wx:if="{{authorization == 0 && !canIUseGetUserProfile}}"  hover-class="none" open-type='getUserInfo' bindgetuserinfo='login' class='btn_clean btn_common btn_2'>授权登录</button>   --> 
+        <button  hover-class="btn_hover" wx:if="{{authorization == 1 }}"  class="btn_clean btn_common btn_2" bindtap="save_form_content">保存</button> 
+      </view> 
+  </view>
+ 
+  </view>

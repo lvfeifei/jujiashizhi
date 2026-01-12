@@ -1,0 +1,47 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top pl30 {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+      <view class="my_title">完成评价</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+
+    <view class="content_inner_box">
+      <image class="zj_img" src="/static/images/pingjia_success.png" />  
+      <view class="article_title">感谢您完成反馈！</view> 
+      <view class="tip_text_box">
+        <view class="tip_text">如果您想进一步得到更具体的指导，请您继续填写内容</view>  
+      </view>
+
+
+    <view class="pj_bottom_box">
+      <!-- <view class="article_title">特邀请您参加</view> 
+      <view class="article_title color_red pj_tip_1">【失智关爱研究调查】</view> 
+      <view class="pj_tip_2">该计划为您提供更专业性的陪护方案</view>  -->
+
+      <view class="article_title">感谢</view>  
+      <view class="pj_tip_2">您想得到更加具体的指导建议，请参加</view> 
+
+      <view class="btn_box">
+        <button class="btn_clean btn_common btn_2" bindtap="go_next" hover-class="btn_hover">参加</button>
+        <button class="btn_clean btn_common btn_1" bindtap="go_index" hover-class="btn_hover">不参加，回到首页</button> 
+      </view>
+    </view>
+   
+   
+       
+    </view>
+     
+        
+        
+    </view>
+
+  </view> 

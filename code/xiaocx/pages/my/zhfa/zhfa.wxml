@@ -1,0 +1,60 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">照护方案</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+      
+        <view class="cp_box">
+             <view class="zh_title">患者信息</view>
+             <view class="zh_desc">{{user_data.patient}}</view>
+        </view>
+
+        <view class="zt_title">总体状况说明</view>
+        <view class="zt_desc">根据患者情况，我们给予以下照护方案建议</view>
+
+
+        <!-- <view class="jy_item_box d_flex">
+           <view class="jy_item_left flex">
+              <image class="cp_icon" src="/static/images/hj_icon_1.png" />   
+              <view class="cp_text">居住环境安排</view>
+           </view>
+           <image class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+        </view>
+
+        <view class="jy_item_box d_flex">
+           <view class="jy_item_left flex">
+              <image class="cp_icon" src="/static/images/hj_icon_2.png" />   
+              <view class="cp_text">日常活动安排</view>
+           </view>
+           <image class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+        </view> -->
+      
+        <view class="jy_item_box" wx:for="{{user_data.program}}" wx:key="id" bindtap="go_detail" data-program_class="{{item.program_class}}" data-id="{{item.id}}"> 
+          <view class="jy_item_top d_flex">
+            <view class="jy_item_left flex">
+              <image class="cp_icon" wx:if="{{index == 0}}" src="/static/images/hj_icon_1.png" />   
+              <image class="cp_icon" wx:if="{{index == 1}}" src="/static/images/hj_icon_2.png" />   
+              <image class="cp_icon" wx:if="{{index == 2}}" src="/static/images/hj_icon_3.png" />   
+              <view class="cp_text">{{item.program_class_name}}</view>
+           </view>
+           <image class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+          </view>
+
+          <view class="jy_item_bottom">
+              <view class="jy_item_text" wx:for="{{item.program_child}}" wx:for-item="program_child" wx:key="id">{{program_child.content}}</view> 
+          </view>
+          
+        </view>
+
+    </view>
+
+  </view> 

@@ -1,0 +1,44 @@
+<!--  -->
+<view class="layout_page" >
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">  
+        <view class="my_title">绑定养老院</view>
+    </view>
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;height:{{top + 50}}px ;">
+    
+    </view>
+
+    <view class="header_inner_box" >
+    <view class="inner_box-image"><image src="{{logo}}"></image></view>
+    <view class="text-wrapper_1">
+          <text class="text_5">您通过</text>
+          <text class="text_6">【{{title}}】</text>
+          <!-- <text class="text_7">邀请进入使用小程序，未来将由<text class="text_6">{{title}}</text>协助和帮助您，请点击下方【确认绑定】按钮并绑定关系，如您不是<text class="text_6">{{title}}</text>客户，请放弃绑定！</text> --> 
+          <text class="text_7">邀请进入使用小程序，未来将由{{title}}协助和帮助您，请点击下方【确认绑定】按钮并绑定关系，如您不是{{title}}客户，请放弃绑定！</text>
+    </view>
+
+    <view class="flex-row group_13 space-x-9" wx:if="{{type}}">
+            <view bindtap="pre" class="flex-col justify-start items-center text-wrapper_6">
+                    <text class="text_31">返回首页</text>
+            </view>
+                <button bindtap="remove_bind_click"  class="flex-col justify-start items-center text-wrapper_5">
+                    <text class="font_4">解除绑定</text>
+                </button>
+    </view> 
+       
+
+    <view class="flex-row group_13 space-x-9" wx:else>
+        <view bindtap="pre" class="flex-col justify-start items-center text-wrapper_6">
+            <text class="text_31">取消绑定</text>
+        </view>
+        <button bindtap="bind_click"  class="flex-col justify-start items-center text-wrapper_5">
+            <text class="font_4">确认绑定</text>
+        </button>
+    </view> 
+        
+  
+</view>
+ 
+  
+</view>

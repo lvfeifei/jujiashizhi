@@ -1,0 +1,73 @@
+
+{
+    "pages": [ 
+        "pages/index/index", 
+        "pages/bindhome/bindhome",
+        "pages/index/xieyi/xieyi",
+        "pages/my/my",
+        "pages/result/result",
+        "pages/index/article_detail/article_detail",
+        "pages/index/evaluation/evaluation",
+        "pages/index/evaluation_one/evaluation_one",
+        "pages/index/evaluation_two/evaluation_two",
+        "pages/index/evaluation_three/evaluation_three",
+        "pages/index/evaluation_four/evaluation_four",
+        "pages/index/evaluation_wait/evaluation_wait",
+        "pages/index/evaluation_success/evaluation_success",
+        "pages/index/pingjia/pingjia",
+        "pages/index/pingjia_one/pingjia_one",
+        "pages/index/pingjia_success/pingjia_success",
+        "pages/my/hzxx/hzxx",
+        "pages/my/jlxx/jlxx",
+        "pages/my/zhfa/zhfa",
+        "pages/my/zhaohujianyi/zhaohujianyi",
+        "pages/my/diaocha/diaocha",
+        "pages/my/diaocha_taidu/diaocha_taidu",
+        "pages/my/diaocha_wancheng/diaocha_wancheng",
+        "pages/my/diaocha_luyin/diaocha_luyin",
+        "pages/auth/auth"
+    
+    ],
+    "useExtendedLib": {
+        "weui": true
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "usingComponents": {
+        "dialog": "/components/dialog/dialog",
+        "dialog_two": "/components/dialog_two/dialog",
+        "mp-badge": "weui-miniprogram/badge/badge"
+    },
+    "tabBar": {
+        "custom": true,
+        "color": "#8A8E93",
+        "selectedColor": "#DF105E",
+        "backgroundColor": "#ffffff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "static/tabbar/home.png",
+                "selectedIconPath": "static/tabbar/home-on.png"
+            },
+            {
+                "pagePath": "pages/result/result",
+                "text": "专家互动",
+                "iconPath": "static/tabbar/result.png",
+                "selectedIconPath": "static/tabbar/result-on.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的记录",
+                "iconPath": "static/tabbar/mine.png",
+                "selectedIconPath": "static/tabbar/mine-on.png"
+            }
+        ]
+    },
+    "lazyCodeLoading": "requiredComponents",
+    "sitemapLocation": "sitemap.json"
+}

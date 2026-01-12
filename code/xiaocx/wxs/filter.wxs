@@ -1,0 +1,79 @@
+var picture_url = 'https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/';
+var filters = {  
+
+  // 手机号 中间替换 星号
+  replace_tel:function(tel){
+     return tel.replace(tel.substring(3,7), "****");  
+  }, 
+  // 查询是否存在数组某个值  
+   exits_arr:function(arr,item){
+    return  arr.indexOf(item) > -1  
+ },
+
+ // 判断测评页面数组 是否存在 当前选项
+ check_item_one_arr:function(arr,item){  
+  if(!arr.length){
+    return false
+  }else{  
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].id == item.capability_id){   
+          if(arr[i].options.indexOf(item.id) > -1){
+              return true
+          }else{ 
+            return false
+          }
+      } 
+    } 
+ }
+ },
+
+ // 判断调查态度表 是否包含单选项
+ check_taidu_arr:function(arr,item,itemName){ 
+    if(!arr.length){
+        return false
+    }
+
+    var  question_id = item.id
+    for(var i=0;i<arr.length;i++){
+        if(arr[i].question_id == question_id ||  arr[i].id == question_id){    
+            if(arr[i].option_text == itemName){
+                return true
+            }else{ 
+              return false
+            }
+        } 
+    }  
+
+ },
+
+ // 检查选项是不是其它
+ check_item_is_auther:function(arr,item){  
+  if(!arr.length){
+    return false
+  }else{  
+    for(var i=0;i<arr.length;i++){
+      if(arr[i].id == item.capability_id){   
+          if(arr[i].options[0] == item.id && item.name == '其它' ){
+              return true
+          }else{ 
+            return false
+          }
+      } 
+    } 
+ }
+ },
+
+ get_picture:function(str){
+  // return picture_url + str
+  return   str
+ },
+}
+
+module.exports = { 
+  replace_tel:filters.replace_tel,
+  exits_arr:filters.exits_arr,
+  check_item_one_arr:filters.check_item_one_arr,
+  get_picture:filters.get_picture,
+  check_item_is_auther: filters.check_item_is_auther,
+  check_taidu_arr: filters.check_taidu_arr
+}

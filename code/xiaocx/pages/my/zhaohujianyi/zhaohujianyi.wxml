@@ -1,0 +1,54 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">{{title}}</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+      
+      <block  wx:if="{{program_class == 'problem_advice'}}">
+        <view class="content_list_box" wx:for="{{detail.program}}" wx:key="id"  wx:for-index="index">
+          <view class="cp_box">
+              <view class="zh_title">{{item.content}}</view> 
+          </view> 
+          <view class="zhwt_list_box" wx:for="{{item.child}}" wx:for-item="child"  wx:for-index="child_index"  wx:key="id">
+            <view class="zhwt_top_box" > 
+                  <view class="zhwt_number" >{{child_index + 1}}</view>
+                  <view class="left_content" >
+                    <view class="conten_inner_box"  wx:for="{{child.content}}" wx:for-item="content" wx:for-index="content_index"   wx:key="content_index">
+                      <view class="zhwt_title"  wx:if="{{content.type == 'text'}}" >{{content.con}}</view>    
+                      <image class="zhwt_img" wx:if="{{content.type == 'image'}}" src="{{content.con}}" alt=""/>
+                      <video style="width: 100%;"  wx:if="{{content.type == 'video'}}" src="{{content.con}}"   controls  ></video>
+                    </view>   
+                  </view> 
+            </view>
+          </view> 
+        </view>
+  
+      </block>
+     
+ 
+      <view class="content_list_box" wx:else > 
+            <view class="zhwt_list_box" wx:for="{{detail.program}}" wx:key="id"  wx:for-index="index">
+            <view class="zhwt_top_box"  wx:for="{{item.content}}" wx:for-item="content"   wx:for-index="content_index" wx:key="*this">
+                <view class="zhwt_number"  wx:if="{{content.type == 'text'}}" >{{index + 1}}</view>
+                <view class="conten_box"  >
+                  <view class="zhwt_title"  wx:if="{{content.type == 'text'}}" >{{content.con}}</view>    
+                  <image class="zhwt_img" wx:if="{{content.type == 'image'}}" src="{{content.con}}" alt=""/>
+                  <video style="width: 100%;"  wx:if="{{content.type == 'video'}}" src="{{content.con}}"   controls  ></video>
+                </view>  
+            </view>
+            
+          </view>  
+      </view>
+      
+    </view>
+
+  </view> 

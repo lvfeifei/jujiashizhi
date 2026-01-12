@@ -1,0 +1,1026 @@
+[2022-07-27 10:32:08.472] 127.0.0.1 POST www.shizhi.com/api/help/index	[runtime=0.616000s] [reqs=1.62req/s] [memory=3,501.79kb] [file=66]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '169',
+  'content-type' => 'multipart/form-data; boundary=--------------------------861741950886759630884054',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_class_id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->index[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:0.028000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.023000s ]
+[ sql ] [ SQL ] SELECT `id`,`help_class_id`,`image`,`bigimage`,`create_time`,`sort` FROM `cx_help` WHERE  `help_class_id` = 1  AND `send_status` = 1  AND `is_del` = 1 ORDER BY `create_time` DESC LIMIT 0,10 [ RunTime:0.020000s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `cx_help` WHERE  `is_del` = 1  AND `id` = 1 LIMIT 1 [ RunTime:0.017000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_config` [ RunTime:0.020000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `cx_config` WHERE  `key` = 'helpType' LIMIT 1 [ RunTime:0.024000s ]
+[2022-07-27 10:35:24.321] 127.0.0.1 POST www.shizhi.com/api/help/index	[runtime=0.141000s] [reqs=7.09req/s] [memory=3,501.79kb] [file=66]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '169',
+  'content-type' => 'multipart/form-data; boundary=--------------------------804125975828478787970726',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_class_id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->index[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:0.022000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.019000s ]
+[ sql ] [ SQL ] SELECT `id`,`help_class_id`,`image`,`bigimage`,`create_time`,`sort` FROM `cx_help` WHERE  `help_class_id` = 1  AND `send_status` = 1  AND `is_del` = 1 ORDER BY `create_time` DESC LIMIT 0,10 [ RunTime:0.016000s ]
+[ sql ] [ SQL ] SELECT COUNT(id) AS tp_count FROM `cx_help` WHERE  `is_del` = 1  AND `id` = 1 LIMIT 1 [ RunTime:0.016000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_config` [ RunTime:0.014000s ]
+[ sql ] [ SQL ] SELECT `value` FROM `cx_config` WHERE  `key` = 'helpType' LIMIT 1 [ RunTime:0.015000s ]
+[2022-07-27 15:52:54.205] 127.0.0.1 POST www.shizhi.com/api/help/details	[runtime=2.908000s] [reqs=0.34req/s] [memory=3,475.03kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'details',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '163',
+  'content-type' => 'multipart/form-data; boundary=--------------------------728325619386696982175339',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->details[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:2.417000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.061000s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`content`,`create_time` FROM `cx_help` WHERE  `id` = 1  AND `send_status` = 1  AND `is_del` = 1 LIMIT 1 [ RunTime:0.068000s ]
+[2022-07-27 15:53:27.246] 127.0.0.1 POST www.shizhi.com/api/help/details	[runtime=4.057000s] [reqs=0.25req/s] [memory=3,469.09kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'details',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '164',
+  'content-type' => 'multipart/form-data; boundary=--------------------------085723249210942053164689',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_id' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->details[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:3.926000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.050000s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`content`,`create_time` FROM `cx_help` WHERE  `id` = 10  AND `send_status` = 1  AND `is_del` = 1 LIMIT 1 [ RunTime:0.051000s ]
+[2022-07-27 15:54:59.34] 127.0.0.1 POST www.shizhi.com/api/help/details	[runtime=3.752000s] [reqs=0.27req/s] [memory=3,469.09kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'details',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '164',
+  'content-type' => 'multipart/form-data; boundary=--------------------------995168691045892411863523',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_id' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->details[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:3.066000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.089000s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`content`,`create_time` FROM `cx_help` WHERE  `id` = 10  AND `send_status` = 1  AND `is_del` = 1 LIMIT 1 [ RunTime:0.561000s ]
+[2022-07-27 15:59:14.3] 127.0.0.1 POST www.shizhi.com/api/help/details	[runtime=3.096000s] [reqs=0.32req/s] [memory=3,475.03kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'help',
+    2 => 'details',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '163',
+  'content-type' => 'multipart/form-data; boundary=--------------------------322442949072955541051631',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'help_id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Help->details[ D:\www\shizhi\api\app\api\controller\Help.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:3.026000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_help` [ RunTime:0.017000s ]
+[ sql ] [ SQL ] SELECT `id`,`title`,`content`,`create_time` FROM `cx_help` WHERE  `id` = 1  AND `send_status` = 1  AND `is_del` = 1 LIMIT 1 [ RunTime:0.019000s ]
+[2022-07-27 18:13:50.627] 127.0.0.1 POST www.shizhi.com/api/basic_config/index	[runtime=0.092000s] [reqs=10.87req/s] [memory=2,107.07kb] [file=53]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'basic_config',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File	[ error ] [0]Class app\api\controller\Request does not exist[D:\www\shizhi\api\thinkphp\library\think\App.php:403]
+[2022-07-27 18:14:19.996] 127.0.0.1 POST www.shizhi.com/api/basic_config/index	[runtime=0.018000s] [reqs=55.56req/s] [memory=2,244.23kb] [file=54]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'basic_config',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\api\controller\BasicConfig->index[ D:\www\shizhi\api\app\api\controller\BasicConfig.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 18:17:52.985] 127.0.0.1 POST www.shizhi.com/api/basic_config/index	[runtime=0.023000s] [reqs=43.48req/s] [memory=2,244.23kb] [file=54]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'basic_config',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\api\controller\BasicConfig->index[ D:\www\shizhi\api\app\api\controller\BasicConfig.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:25:16.303] 127.0.0.1 POST www.shizhi.com/api/user/save	[runtime=0.078000s] [reqs=12.82req/s] [memory=3,558.03kb] [file=68]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'save',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------187650711574509026720893',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:26:29.174] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.028000s] [reqs=35.71req/s] [memory=3,403.45kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------188734647634881560197853',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:27:09.883] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.028000s] [reqs=35.71req/s] [memory=3,403.45kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------197950037628241604078400',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:38:07.541] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.036000s] [reqs=27.78req/s] [memory=3,378.12kb] [file=62]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------558647899066762671371103',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:38:19.472] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.032000s] [reqs=31.25req/s] [memory=3,378.12kb] [file=62]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------496051502847823227011301',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q7',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:39:53.37] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.031000s] [reqs=32.26req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------531051829252659467740601',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q7',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:40:12.332] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.031000s] [reqs=32.26req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------897578354460283824620403',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:40:19.659] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.032000s] [reqs=31.25req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------133026050256774405266007',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:41:13.408] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.026000s] [reqs=38.46req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------836884860382890961167571',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:41:32.49] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.032000s] [reqs=31.25req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------762740895007985821409534',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:41:52.217] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.025000s] [reqs=40.00req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------071354228620302680140358',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:42:24.743] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.033000s] [reqs=30.30req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------931539011238510813349680',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:42:58.761] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.053000s] [reqs=18.87req/s] [memory=3,563.20kb] [file=69]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------968914241877309362248380',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File	[ error ] [8]未定义变量: data[D:\www\shizhi\api\app\api\controller\User.php:69]
+[2022-07-27 20:43:11.779] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.197000s] [reqs=5.08req/s] [memory=3,505.66kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------652964434755569399015309',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:0.081000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_user` [ RunTime:0.050000s ]
+[ sql ] [ SQL ] SELECT * FROM `cx_user` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.037000s ]
+[2022-07-27 20:43:57.244] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.025000s] [reqs=40.00req/s] [memory=3,403.48kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------857396372958122285054200',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File
+[2022-07-27 20:45:04.560] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.170000s] [reqs=5.88req/s] [memory=3,505.66kb] [file=63]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------322215623317882272861025',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:0.058000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_user` [ RunTime:0.041000s ]
+[ sql ] [ SQL ] SELECT * FROM `cx_user` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.040000s ]
+[2022-07-27 20:45:31.370] 127.0.0.1 POST www.shizhi.com/api/user/userSave	[runtime=0.235000s] [reqs=4.26req/s] [memory=3,620.44kb] [file=66]	[ info ] [ LANG ] D:\www\shizhi\api\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'user',
+    2 => 'userSave',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '1883',
+  'content-type' => 'multipart/form-data; boundary=--------------------------099630359857627785627477',
+  'connection' => 'keep-alive',
+  'accept-encoding' => 'gzip, deflate, br',
+  'host' => 'www.shizhi.com',
+  'accept' => '*/*',
+  'user-agent' => 'apifox/1.0.0 (https://www.apifox.cn)',
+  'usertoken' => 'MDAwMDAwMDAwMIGEbXY',
+  'token' => '3c72970bc0d2064ee7806fad2fb405b625dd5c61',
+)
+[ info ] [ PARAM ] array (
+  'gender' => 'S1',
+  'age' => '40',
+  'education' => 'U3',
+  'care_years' => 'V1',
+  'relation' => 'W2',
+  'live' => 'X1',
+  'patient_gender' => 'L2',
+  'patient_age' => '70',
+  'patient_education' => 'N3',
+  'patient_disease_type' => 'O2',
+  'patient_illness' => 'P1',
+  'patient_hobby' => 
+  array (
+    0 => 'Q1',
+    1 => 'Q5',
+    3 => 'Q8',
+  ),
+  'patient_walk' => 'R3',
+  'patient_hobby_content' => '自定义爱好',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\User->userSave[ D:\www\shizhi\api\app\api\controller\User.php ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ LOG ] INIT File	[ sql ] [ DB ] CONNECT:[ UseTime:0.052000s ] mysql:host=112.125.122.16;port=3306;dbname=jujiashizhi;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cx_user` [ RunTime:0.030000s ]
+[ sql ] [ SQL ] SELECT * FROM `cx_user` WHERE  `id` = 1  AND `status` = 1 LIMIT 1 [ RunTime:0.036000s ]
+[ sql ] [ SQL ] UPDATE `cx_user`  SET `gender`='S1',`age`=40,`education`='U3',`care_years`='V1',`relation`='W2',`live`='X1',`patient_gender`='L2',`patient_age`=70,`patient_education`='N3',`patient_disease_type`='O2',`patient_illness`='P1',`patient_hobby`='{\"0\":\"Q1\",\"1\":\"Q5\",\"3\":\"Q8\"}',`patient_walk`='R3',`patient_hobby_content`='自定义爱好'  WHERE  `id` = 1 [ RunTime:0.044000s ]

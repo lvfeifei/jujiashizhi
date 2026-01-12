@@ -1,0 +1,126 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <!-- <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">  -->
+
+    <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+    <!-- <view class="my_title">专家互动</view> 
+    </view>  -->
+
+    <!-- <view class="header_box" style="height: {{nav_height + 20}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view>  -->
+
+    <view class="scroll_view_wrapper">
+        <scroll-view class="scroll_box" scroll-with-animation="{{ true }}" scroll-y="{{ true }}" scroll-into-view="{{ chat_num }}" scroll-with-animation="{{ true }}" upper-threshold='500'>
+            <view class="chat_left" style="padding-top: 30rpx;padding-bottom: 0;" wx:if="{{zj_message.content}}">
+                <view class="chat_avatar">
+                    <image src="{{ zj_message.avatar_url }}"></image>
+                </view>
+                <view class="chat_cont">{{ zj_message.content }}
+                    <view class="cont_triangle">
+                        <image src="../../img/sanjiao_left.png"></image>
+                    </view>
+                </view>
+            </view>
+
+            <view wx:for='{{ chat_list }}' wx:key='index' id="chat{{ index }}" class="chat-box">
+
+                <!-- <view class="times" wx:if='{{ item.msg_type == 0 && item.type == 1 }}'>{{ item.content }} {{ (index==0)?'由您发起对话':'' }}</view> -->
+
+                <view class="times" wx:if='{{ item.msg_type == 0 && item.type == 1 }}'>{{ item.content }}</view>
+                <view class="times" wx:if='{{ item.msg_type == 0 && item.type == 2 }}'>{{ item.content }}</view>
+                <view class="chat_right" wx:if='{{ item.type == 1 &&  item.msg_type != 0 }}'>
+                    <view class="chat_avatar">
+                        <image src="{{ item.avatar_url }}"></image>
+                    </view>
+
+                    <view class="chat_img" wx:if='{{ item.msg_type == 2 }}' bindtap="yu" data-e="{{ item.content }}">
+                        <image class="img" mode="widthFix" src="{{ item.content }}"></image>
+                    </view>
+
+                    <view class="chat_cont" wx:if='{{ item.msg_type == 1 }}'>{{ item.content }}
+                        <view class="cont_triangle">
+                            <image src="../../img/sanjiao_right.png"></image>
+                        </view>
+                    </view>
+
+                    <view class="chat_cont {{ item.msg_type == 3 ? 'chat_cont_audio' : '' }}" style="width: {{ item.msg_type == 3 ? 6 * item.voice_time * 1 + 150 + 'rpx' : ''}};" wx:if='{{ item.msg_type == 3 }}' data-audio="{{item.content}}" bindtap="play_audio">
+                        <view class="chat_con_audio_time">{{item.voice_time}} </view>
+                        <image class="chat_con_audio_icon" src=" {{(last_url === item.content && is_play) ? '/static/chat/play_muisc.gif' : '/static/chat/play_icon.png'}} "></image>
+                        <view class="cont_triangle">
+                            <image src="../../img/sanjiao_right.png"></image>
+                        </view>
+                    </view>
+
+                </view>
+
+                <view class="chat_left" wx:if='{{ item.type == 2 && item.msg_type != 0 && item.msg_type != 3 }}'>
+                    <!-- <view class="chat_avatar">
+				<image class="avatar-img" src="../../img/logo.png"></image>
+			</view> -->
+                    <view class="chat_avatar">
+                        <image src="{{ item.avatar_url }}"></image>
+                    </view>
+
+                    <view class="chat_img" wx:if='{{ item.msg_type == 2 }}' bindtap="yu" data-e="{{ item.content }}">
+                        <image class="img" mode="widthFix" src="{{ item.content }}"></image>
+                    </view>
+                    <view class="chat_cont" wx:if='{{ item.msg_type == 1 }}'>{{ item.content }}
+                        <view class="cont_triangle">
+                            <image src="../../img/sanjiao_left.png"></image>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="chat_left" wx:if='{{ item.type == 2 && item.msg_type == 3 }}'>
+                    <view class="chat_avatar">
+                        <image class="avatar-img" src="../../img/logo.png"></image>
+                    </view>
+                    <view class="chat_conts" bindtap="go_detail" data-id="{{ item.content.problem_id }}">
+                        <view class="cont_top">
+                            <view class="top_txt">您反馈的问题已处理</view>
+                            <view class="right_icon">
+                                <image src="../../img/right.png"></image>
+                            </view>
+                        </view>
+                        <view class="cont_li">
+                            <view class="cont_li_left">投诉问题：</view>
+                            <view class="cont_li_right">{{ item.content.title }}</view>
+                        </view>
+                        <view class="cont_li">
+                            <view class="cont_li_left">处理日期：</view>
+                            <view class="cont_li_right">{{ item.content.time }}</view>
+                        </view>
+                        <view class="cont_triangle">
+                            <image src="../../img/sanjiao_left.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="talk_flex_box" wx:if="{{status == 3}}">
+        <image class="talk_icon" src="/static/chat/talk_icon.png"></image>
+        <view class="talk_tip_text">讲话中</view>
+    </view>
+
+    <view class="search_box" style="bottom:{{ bottomLift + 'rpx'}} ">
+        <block wx:if="{{status == 1}}">
+            <image class="right_icon" src="/static/chat/audio_icon.png" data-status='2' bindtap="change_status"></image>
+            <input cursor-spacing="20" placeholder="请输入您的问题…" confirm-hold='true' value="{{ content }}" bindinput="set_content" class="input_box" />
+        </block>
+
+        <block wx:else>
+            <image class="right_icon" src="/static/chat/input_icon.png" data-status='1' bindtap="change_status"></image>
+            <view bind:touchend="touchend" bind:touchstart="touchstart" class="talk_common_box {{ status == 2 ? 'talk_box' :  ( status == 3 ? 'talk_grey_box' : '') }} ">按住说话</view>
+        </block>
+
+        <button wx:if="{{status == 1}}" class="btn-send" bindtap="send_write" hover-class="btn_hover">发送</button>
+    </view>
+
+    <view wx:if="{{user_info.authorization != 1}}" class="is_check_login" bindtap="go_auth">
+    </view>
+ 
+</view>

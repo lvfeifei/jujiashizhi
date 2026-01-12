@@ -1,0 +1,8 @@
+ 
+ <view class="dialog_page"  >
+   <view class="dialog_top"></view>
+   <view class="dialog_bottom"> 
+    <image bindtap="close_dialog" class="close_icon" src="/static/images/close_icon.png" />   
+     <slot></slot>
+   </view>
+ </view>  

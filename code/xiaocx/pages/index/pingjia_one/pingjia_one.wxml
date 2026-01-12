@@ -1,0 +1,80 @@
+<wxs module="filters" src="../../../wxs/filter.wxs"></wxs>
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">开始评价</view> 
+    </view> 
+ 
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: cover ;">  
+    </view> 
+ 
+    <view class="desc_wrapper"> 
+      <!-- <view class="desc_title">个人卫生</view> -->
+
+      <!-- 日常生活安排 --> 
+      <view class="pj_box" >
+        <view class="pj_title_box" >
+          <view class="pj_title" style=" background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/6391660923792.png') no-repeat;  background-size: cover;">{{question_list[0].program_class_name}} </view>
+        </view> 
+  
+       <view class="anli_list_box" wx:for="{{question_list[0].Program}}" wx:key="id" > 
+            <view class="anli_item_box"> 
+              <view class="anli_title">{{index + 1}}.
+              <block wx:for="{{item.content}}"  wx:for-item="content" wx:key="*this"> 
+                <text wx:if="{{content.type == 'text'}}">{{content.con}}</text>
+              </block> 
+               </view>  
+              <view class="choice_list"> 
+                  <view class="choice_item" wx:for="{{item.options}}" wx:key="index" data-type="1"  wx:for-item="item_option"  bindtap="click_item" data-options="{{item_option}}"  data-item="{{item}}">
+                    <image class="anli_check_img" src="/static/images/{{ filters.check_taidu_arr(question,item,item_option) ? 'check_1' : 'no_check_1'}}.png" />
+                    <text class="choice_item_text {{ filters.check_taidu_arr(question,item,item_option) ? 'choice_item_text_actvie' : ''}}">{{item_option}}</text> 
+                  </view>  
+              </view>  
+            </view>  
+        </view> 
+
+      </view>
+ 
+      <!-- 照护问题的照护建议 -->
+      <view class="pj_box">
+        <view class="pj_title_box">
+          <view class="pj_title" style=" background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/6391660923792.png') no-repeat;  background-size: cover;">{{question_list[1].program_class_name}} </view> 
+        </view>
+         
+        <view class="anli_list_box"  wx:for="{{question_list[1].Program}}" wx:key="id">
+ 
+            <view class="anli_list_title">{{item.content}}</view>
+            <view class="anli_item_box" wx:for="{{item.child}}" wx:key="id"   wx:for-item="item_child" > 
+             <view class="anli_title">
+                {{index + 1}}.
+                <block wx:for="{{item_child.content}}"  wx:for-item="content" wx:key="index"> 
+                  <text wx:if="{{content.type == 'text'}}">{{content.con}}</text>
+                </block>  
+              </view>    
+               <view class="choice_list">
+                <view class="choice_item" wx:for="{{item_child.options}}" wx:key="index"   wx:for-item="item_option" data-type="2"  bindtap="click_item" data-options="{{item_option}}"  data-item="{{item_child}}">
+                    <image class="anli_check_img" src="/static/images/{{ filters.check_taidu_arr(question,item_child,item_option) ? 'check_1' : 'no_check_1'}}.png" /> 
+                    <text class="choice_item_text {{ filters.check_taidu_arr(question,item,item_option) ? 'choice_item_text_actvie' : ''}}">{{item_option}}</text> 
+                  </view> 
+              </view>  
+            </view> 
+          
+        </view>
+  
+      </view>  
+    
+        
+    </view>
+ 
+   <view class="btn_group_wrpaer">
+      <view class="btn_group_box">
+        <button class="btn_clean btn_common btn_1" bindtap="go_back" hover-class="btn_hover">返回</button>
+        <button class="btn_clean btn_common btn_2" bindtap="go_next" hover-class="btn_hover">提交</button>
+      </view> 
+   </view>
+ 
+</view> 

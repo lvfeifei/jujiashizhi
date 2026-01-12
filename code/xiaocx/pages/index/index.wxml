@@ -1,0 +1,152 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top pl30 {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">
+
+        <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+        <view class="my_title">居家失智照护辅助系统</view>
+    </view>
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ; {{is_show_pj_box ? ' height: 1010rpx;' : ' height: 686rpx;'}}">
+        <view class="header_inner_box">
+            <view class="header_title">该系统由中国电子院和北京大学护理学院王志稳教授失智照护团队共同研发</view>
+            <view class="check_box">
+                <view class="check_item_box quest_one_box" bindtap="go_ceping">
+                    <image class="check_item_icon" src="/static/images/question_icon.png" />
+                    <view class="check_item_title">问题输入</view>
+                    <view class="check_item_desc">点击进入勾选困扰您的照护问题</view>
+                </view>
+                <view class="check_item_box" bindtap="go_zhaohufangan">
+                    <image class="check_item_icon" src="/static/images/zgfa_icon.png" />
+                    <view class="check_item_title">照护方案</view>
+                    <view class="check_item_desc">点击查看专家反馈的个性化照护方案</view>
+                </view>
+            </view>
+
+            <view class="check_item_box wtsr_box" wx:if="{{is_show_pj_box}}" bindtap="go_pj_page">
+                <view class="wtsr_title">请您对专家推荐的照护方案建议进行评价</view>
+                <view class="wtsr_desc">您的评价让我们可以更好的为您提供服务</view>
+                <button class="btn_clean  cj_btn_box" hover-class="btn_hover">
+                    <image class="btn_img" src="/static/images/pj_icon.png" alt="" />
+                    <text class="cj_btn_text  wclz_text color_white">点击评价</text>
+                </button>
+            </view>
+
+        </view>
+    </view>
+
+    <view class="project_list_box" style="background: {{show_type == 1 ? '#fff' : '#f5f5f5'}};">
+        <view class="tab_menu_box">
+            <view class="tab_menu_item {{ change_menu_active == 1 ? 'active' : ''}} " data-menu="1" bindtap="change_menu">典型案例</view>
+            <view class="tab_menu_item  {{ change_menu_active == 2 ? 'active' : ''}}" data-menu="2" bindtap="change_menu">共性问题解答</view>
+        </view>
+
+        <view class="anli_list_box" wx:if="{{ change_menu_active==1}}">
+            <view wx:if="{{show_type == 1}}">
+                <view class="anli_item_box" bindtap="go_detail" data-ids="{{ item.id }}" wx:for="{{result_list}}" wx:key="krl">
+                    <image class="anli_img" src="{{item.bigimage}}" alt="{{ item.title }}" />
+                    <view class="anli_mask"> </view>
+                    <image wx:if="{{item.video}}" class="play_img" src="../../img/play circle.png"   />
+                    <view class="ali_text">{{item.title}}</view>
+                </view>
+            </view>
+            <view wx:if="{{show_type == 2}}">
+                <view class="anli_item_small_box" bindtap="go_detail" data-ids="{{item.id}}" wx:for="{{result_list}}" wx:key="krl">
+                    <view class="img_box">
+                        <image class="anli_small_img" src="{{item.image}}" alt="{{ item.title }}" />
+                         <image wx:if="{{item.video}}" class="small_play_img" src="../../img/play circle.png"   />
+                    </view>  
+                    <view class="ali_small_right">
+                        <view class="ali_small_text multiline-ellipsis">{{item.title}}</view>
+                        <view class="ali_small_time">{{item.create_time}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="anli_list_box" wx:if="{{ change_menu_active==2}}">
+            <view wx:if="{{show_type == 1}}">
+                <view class="anli_item_box" bindtap="go_detail" data-ids="{{ item.id }}" wx:for="{{result_list2}}" wx:key="krl">
+                    <image class="anli_img" src="{{item.bigimage}}" alt="{{ item.title }}"  mode="aspectFill" />
+                    <image wx:if="{{item.video}}" class="play_img" src="../../img/play circle.png"   />
+                    <view class="anli_mask"></view>
+                    <view class="ali_text">{{item.title}}</view>
+                </view>
+            </view>
+            <view wx:if="{{show_type == 2}}">
+                <view class="anli_item_small_box" bindtap="go_detail" data-ids="{{item.id}}" wx:for="{{result_list2}}" wx:key="krl">
+                    <view class="img_box">
+                        <image class="anli_small_img" src="{{item.image}}" alt="{{ item.title }}" />
+                        <image wx:if="{{item.video}}" class="small_play_img" src="../../img/play circle.png"   />
+                    </view>  
+                    <view class="ali_small_right">
+                        <view class="ali_small_text multiline-ellipsis">{{item.title}}</view>
+                        <view class="ali_small_time">{{item.create_time}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+
+    <dialog_two wx:if="{{show_dialog}}" bind:close="close">
+        <view class="dialog_content">
+            <image class="index_pj_icon" src="/static/images/index_pj_icon.png" />
+            <view class="dialog_title"> 请您对专家推荐的照护方案建议进行评价 </view>
+            <view class="dialog_tip"> 您的评价让我们可以更好的为您提供服务 </view>
+            <view class="pj_btn_view btn_hover" bindtap="go_pj_page">点击评价</view>
+        </view>
+    </dialog_two>
+ 
+    <!-- <view class="xieyi_dialog" wx:if="{{is_show_xieyi_dialog}}">
+        <view class="xieyi_content">
+            <view class="xieyi_tip">温馨提示</view>
+            <view class="innder_content">
+                <view class="content_text">感谢使用居家失智照护辅助系统！</view>
+                <view class="content_text text-indent">为了让您更好，更放心的使用居家失智照护辅助系统，请您务必仔细阅读 <text class="color_red xieyi_title" bindtap="go_xieyi" data-key="disclaimer">《居家失智照护辅助系统免责声明》点击查看全文 、</text><text class="color_red xieyi_title" bindtap="go_xieyi" data-key="privacy">《居家失智照护辅助系统隐私保护政策》点击查看全文</text>，并充分理解协议中的条款内容再点击同意，以便您能够更好的行使个人权利及保护个人信息。</view>
+                <view class="content_text text-indent">您点击“不同意”以上协议或其中任意条款，我们将无法为您服务。</view>
+                <view class="content_text text-indent">您点击“同意”意味着你自觉遵守以上协议，居家失智照护辅助系统将严格保护您的个人信息。</view> 
+            </view> 
+            <view class="xieyi_btn_group">
+                <button class="xieyi_btn btn_border" bindtap="no_agree_btn">不同意</button>
+                <button class="xieyi_btn color_red "  bindtap="agree_btn">同意协议</button>
+            </view>
+        </view> 
+    </view> -->
+ 
+    <view class="xieyi_dialog" wx:if="{{is_show_xieyi_dialog}}">
+        <view class="xieyi_content">
+            <view class="xieyi_tip">温馨提示</view>
+            <view class="innder_content"> 
+                <view class="xieyi_content_text text-indent">尊敬的用户，为了让您更放心的使用居家失智照护辅助系统，请您务必仔细阅读《居家失智照护辅助系统免责声明》《居家失智照护辅助系统隐私保护政策》并充分理解协议中的条款内容再点击同意，以便您能够更好的行使个人权利及保护个人信息。</view>
+                <view class="xieyi_content_text text-indent" style="margin-top: 10rpx;">您点击“拒绝”协议或其中任意条款，我们将无法为您服务。</view>
+                <view class="xieyi_content_text text-indent">您点击“同意”意味着您自觉遵守以上协议，本系统将严格保护您的个人信息。</view> 
+ 
+                <view class="xieyi_bottom_box"> 
+                    <view class="xieyi_article_tip">请点击以下标题，阅读完整版</view>
+                    <view class="xieyi_article_box">
+                        <view class="color_red xieyi_article_title" bindtap="go_xieyi" data-key="disclaimer">
+                            <text>《免责声明》</text>
+                            <image class="click_icon" src="../../img/click_icon.png" alt=""/>
+                        </view>
+                        <view class="color_red xieyi_article_title" bindtap="go_xieyi" data-key="privacy"> 
+                            <text>《隐私政策》</text>
+                            <image class="click_icon" src="../../img/click_icon.png" alt=""/>
+                        </view>
+                    </view> 
+                </view>  
+               
+            </view> 
+
+            <view class="xieyi_btn_group">
+                <button class="xieyi_btn no_agree_btn" bindtap="no_agree_btn">拒绝</button>
+                <button class="xieyi_btn agree_btn "  bindtap="agree_btn">同意</button>
+            </view>
+
+        </view> 
+    </view>
+
+ 
+</view>

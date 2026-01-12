@@ -1,0 +1,152 @@
+ 
+ <view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+
+      <view class="my_title">记录详情</view> 
+    </view> 
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;">
+      <view class="header_inner_box">  
+
+          <view class="pgz_box flex">
+            <image class="pgz_icon" src="/static/images/pgz_icon.png" />   
+            <view class="pg_title" wx:if="{{patient.status === 1}}">专家评估中</view>
+            <view class="pg_title" wx:else>{{patient.status_title}}</view>
+          </view>   
+          <view class="pg_tip_text" wx:if="{{patient.status === 1}}">{{patient.status_title}}</view>
+           
+      </view>
+    </view>
+
+
+    <view class="project_list_box">
+      
+      <view class="common_bg_box hzxx_box"  wx:if="{{patient.gender_name}}">  
+            <view class="hzxx_top_box d_flex">
+              <view class="name_title">患者信息</view>
+              <!-- <image class="right_jt_icon" src="/static/images/right_jt_icon.png" /> -->
+            </view> 
+            <view class="hz_desc_box">
+              <view class="sex_age_text_box flex" >
+                  <view class="sex_age_text sex_age_text_after">{{patient.gender_name}}</view>
+                  <view class="sex_age_text sex_age_text_after">{{patient.age}}岁</view>
+                  <view class="sex_age_text">{{patient.education_name}}</view>
+              </view>
+              <view class="miaoshu_text">{{patient.disease_type_name}}（{{patient.illness_name}}）</view> 
+              <view class="miaoshu_text">{{patient.walk_name}}</view> 
+              <view class="auther_miaoshu_text">{{patient.hobby_name}}</view>
+ 
+            </view>    
+        </view> 
+
+      <view class="zgjl_wrapper">
+         
+         <view class="list_innner_box">
+           
+            <!-- <view class="common_bg_box zjxx_box">
+ 
+                  <view class="zhwt_top_box flex">
+                    <view class="zhwt_number">1</view>
+                    <view class="zhwt_title">照护问题</view>  
+                  </view>
+
+                  <view class="zhwt_list_box">
+                    <view class="zhwt_list_item_box">
+                        <view class="zhwt_list_item_title">
+                          <text> 1. </text>
+                          <text>吃饭</text>
+                         </view>
+                        <view class="zhwt_list_item_desc">忘记吃过饭，吃完还想吃 </view>
+                    </view>
+                    <view class="zhwt_list_item_box">
+                        <view class="zhwt_list_item_title"> 2. 穿脱衣服</view>
+                        <view class="zhwt_list_item_desc">不能根据季节挑选衣服 </view>
+                    </view>
+                    <view class="zhwt_list_item_box">
+                        <view class="zhwt_list_item_title"> 3. 穿脱衣服</view>
+                        <view class="zhwt_list_item_desc">不能根据季节挑选衣服 </view>
+                    </view>
+                    <view class="zhwt_list_item_box">
+                        <view class="zhwt_list_item_title"> 4. 穿脱衣服</view>
+                        <view class="zhwt_list_item_desc">不能根据季节挑选衣服 </view>
+                    </view>
+                  </view>
+
+            </view>
+
+            <view class="common_bg_box zjxx_box">
+ 
+                <view class="zhwt_top_box flex">
+                  <view class="zhwt_number">2</view>
+                  <view class="zhwt_title">精神行为问题</view>  
+                </view>
+
+                <view class="zhwt_list_box">
+                   
+                  <view class="zhwt_list_item_box"> 
+                    <view class="jsxw_text">诅咒、骂人 </view>
+                  </view>
+
+                  <view class="zhwt_list_item_box"> 
+                    <view class="jsxw_text">打、踢、推、咬人 </view>
+                  </view>
+
+                  <view class="zhwt_list_item_box"> 
+                    <view class="jsxw_text">扔东西、撕东西、破坏物品 </view>
+                  </view>
+
+                  <view class="zhwt_list_item_box"> 
+                      <view class="jsxw_text">重复动作--拍打、敲击、揉搓、吮手指、穿脱鞋子等 </view> 
+                  </view>
+ 
+                </view>
+
+            </view>
+
+            <view class="common_bg_box zjxx_box">
+              
+              <view class="zhwt_top_box flex">
+                <view class="zhwt_number">3</view>
+                <view class="zhwt_title">安全风险问题</view>  
+              </view>
+
+              <view class="zhwt_list_box"> 
+                <view class="zhwt_list_item_box"> 
+                    <view class="jsxw_text">跌倒 / 坠床 / 自伤 / 伤人 / 走失 / 误服危险物品 / 感染 </view>
+                  </view>
+                </view>  
+            </view> -->
+
+            <view class="common_bg_box zjxx_box" wx:for="{{capability}}" wx:key="id"  >
+                
+                <view class="zhwt_top_box flex">
+                  <view class="zhwt_number">{{index + 1}}</view>
+                  <view class="zhwt_title">{{item.name}}</view>  
+                </view>
+
+                <view class="zhwt_list_box">
+                  <view class="zhwt_list_item_box" wx:for="{{item.capability}}"   wx:for-item="capability_item" wx:key="id"> 
+                      <view class="zhwt_list_item_title">
+                     <view class="title_index"> {{index + 1 + '.  '}} </view>
+                     <view> {{  capability_item.capability.name}}</view>
+                     
+                      </view> 
+                      <view class="zhwt_list_item_desc" wx:for="{{capability_item.options}}" wx:for-item="capability_item_option" wx:key="id">{{capability_item_option.name}} </view>
+                  </view> 
+                </view>
+
+            </view>
+  
+         </view>
+ 
+      </view>
+
+      
+    </view>
+     
+ </view>

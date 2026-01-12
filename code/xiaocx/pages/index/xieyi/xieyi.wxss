@@ -1,0 +1,46 @@
+/* pages/index/article_detail/article_detail.wxss */
+
+.header_box{
+  width: 100%; 
+  padding-top: 100rpx;
+}
+
+.header_inner_box {
+  width: 100%; 
+  padding: 30rpx;
+}
+
+.header_title {
+  font-size: 36rpx;
+  font-family: PingFangSC-Regular, PingFang SC; 
+  color: #FFFFFF;
+}
+
+
+.desc_wrapper {
+  width: 100%;
+  background: #FFFFFF; 
+  border-radius: 20rpx 20rpx 0 0;
+  margin-top: -20rpx;
+  padding: 30rpx 40rpx 150rpx;
+}
+
+.desc_wrapper img{
+  max-width: 100%;
+}
+
+.article_title {
+  font-size: 40rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: #000000;
+  line-height: 74rpx;
+  margin-bottom: 46rpx;
+}
+
+.content_text {
+  font-size:28rpx;
+  font-family: PingFangSC-Regular, PingFang SC; 
+  color: #394021;
+  letter-spacing: 4rpx;
+}

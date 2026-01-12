@@ -1,0 +1,111 @@
+.el-card__body {
+  padding: 0;
+}
+
+.menu_list_card {
+  height: 100%;
+  position: relative;
+}
+
+.menu_list_container {
+  height: 100%;
+}
+
+.menu_list_card .title {
+  display: flex;
+  justify-content: space-between;
+  height: 90px;
+  padding: 0 30px;
+}
+
+.menu_list_card .title .el-col {
+  display: flex;
+  align-items: center;
+}
+
+.menu_list_content .my_menu_table {
+  padding: 0 30px 30px;
+  box-sizing: border-box;
+}
+
+.menu_list_content .my_menu_table .text_al {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_list_content .my_menu_table .text_al span {
+  cursor: pointer;
+}
+
+.menu_list_content .my_menu_table .edit {
+  color: #1989fa;
+  margin: 0 15px;
+}
+
+.menu_list_content .my_menu_table .del {
+  color: #fa5555;
+  margin: 0 15px;
+  border: none;
+}
+
+.menu_list_content .my_menu_table .del:hover {
+  background-color: #fff;
+}
+
+.menu_list_content .my_menu_table .padd_20 {
+  padding-left: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.menu_list_content .my_menu_table .padd_50 {
+  padding-left: 80px;
+  box-sizing: border-box;
+}
+
+.menu_list_content .my_menu_table .top {
+  background: #f5f7fa;
+  border: 1px solid #ebeef5;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #909399;
+  box-sizing: border-box;
+}
+
+.menu_list_content .my_menu_table .top .el-checkbox {
+  margin-right: 10px;
+}
+
+.menu_list_content .my_menu_table .menu_item_box .menu_item {
+  box-sizing: border-box;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #606266;
+  border-bottom: 1px solid #ebeef5;
+  border-left: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+}
+
+.menu_list_content .my_menu_table .menu_item_box .menu_item .icon_box {
+  background: #ccd1dc;
+  width: 23px;
+  height: 23px;
+  margin: 0 6px 0 17px;
+}
+
+.menu_list_content .my_menu_table .menu_item_box .menu_inner_item {
+  box-sizing: border-box;
+  border-bottom: 1px solid #ebeef5;
+  border-left: 1px solid #ebeef5;
+  border-right: 1px solid #ebeef5;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}

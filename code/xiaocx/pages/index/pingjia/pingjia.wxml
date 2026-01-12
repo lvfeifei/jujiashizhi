@@ -1,0 +1,37 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">评价</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+        <view class="article_title">请您对照护方案建议进行评价，预计5分钟</view> 
+        <view class="cp_box">
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_1.png" />   
+            <view class="cp_text">日常活动安排</view>
+          </view>
+          <view class="cp_item">
+            <image class="cp_line_1" src="/static/images/line_1.png" />  
+          </view> 
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_5.png" />   
+            <view class="cp_text">照护问题的照护建议</view>
+          </view>
+       
+        </view>
+
+        <view class="btn_group_box"> 
+           <button class="btn_clean btn_common btn_2" bindtap="go_next" hover-class="btn_hover" >开始评价</button>
+        </view>
+
+    </view>
+
+  </view> 

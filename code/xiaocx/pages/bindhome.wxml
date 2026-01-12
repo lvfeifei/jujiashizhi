@@ -1,0 +1,37 @@
+<!--  -->
+<view class="layout_page" wx:if="{{user_info.age }}">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">
+
+        <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+        <view class="my_title">绑定养老院</view>
+    </view>
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;">
+    
+    </view>
+
+    <view class="header_inner_box" >
+    <view class="inner_box-image"><image src="../img/bind.png"></image></view>
+        <view class="inner_box-container">
+        您通过<text>【爱心之家养老院】</text> 邀请   
+        进入使用小程序未来将由爱心之家养老院协助和帮助您，
+        请点击下方【确认绑定】按钮并绑定关系 , 如您不是爱心
+        之家养老院客户,请放弃绑定!
+        </view>
+        </view>
+       
+        <view class="flex-row group_13 space-x-9">
+                <view bindtap="pre" class="flex-col justify-start items-center text-wrapper_6">
+                    <text class="text_31">取消绑定</text>
+                </view>
+                <button  class="flex-col justify-start items-center text-wrapper_5">
+                    <text class="font_4">确认绑定</text>
+                </button>
+            </view>
+
+  
+</view>

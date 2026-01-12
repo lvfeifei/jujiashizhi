@@ -1,0 +1,36 @@
+<wxs module="filters" src="../../../wxs/filter.wxs"></wxs>
+ <view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>  
+
+      <view class="my_title">失智关爱研究调查</view> 
+    </view> 
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> </view>
+ 
+    <view class="project_list_box">
+      <view class="tab_menu_box">  
+        <view class="tab_menu_item" >家庭关系态度表</view>   
+      </view>
+ 
+      <view class="common_bg_box quest_item" wx:for="{{question_list}}" wx:key="id">
+          <view class="qust_title">{{item.id}}. {{item.name}}</view>
+          <view class="answer_box">  
+            <view class="anwer_check_item {{ filters.check_taidu_arr(question,item,itemName) ? 'active' : ''}}"  wx:for="{{item.options}}" wx:key="id"  wx:for-item="itemName" bindtap="click_item" data-options="{{itemName}}"  data-item="{{item}}">  <image class="check_icon_2" src="/static/images/check_icon_2.png" />  {{itemName}}</view> 
+          </view>
+      </view>
+  
+ </view>
+
+    <view class="btn_group_wrpaer">
+        <view class="btn_group_box"> 
+          <button class="btn_clean btn_common btn_1" bindtap="go_back" hover-class="btn_hover">返回</button>
+          <button class="btn_clean btn_common btn_2" bindtap="go_next" hover-class="btn_hover" >下一题</button>
+        </view> 
+    </view>
+ 
+  </view>

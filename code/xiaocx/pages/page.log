@@ -1,0 +1,28 @@
+Evaluation 测试页面
+
+"tabBar": {
+    "color": "#8A8E93",
+    "selectedColor": "#DF105E",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-on.png"
+      },
+      {
+        "pagePath": "pages/result/result",
+        "text": "专家互动",
+        "iconPath": "static/tabbar/result.png",
+        "selectedIconPath": "static/tabbar/result-on.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的记录",
+        "iconPath": "static/tabbar/mine.png",
+        "selectedIconPath": "static/tabbar/mine-on.png"
+      }
+    ]
+  },

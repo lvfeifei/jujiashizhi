@@ -1,0 +1,51 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">测评</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+        <view class="article_title">测评共包含四大方面，预计 5 分钟完成</view> 
+        <view class="cp_box">
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_1.png" />   
+            <view class="cp_text">日常生活照护问题</view>
+          </view>
+          <view class="cp_item">
+            <image class="cp_line_1" src="/static/images/line_1.png" />  
+          </view> 
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_2.png" />   
+            <view class="cp_text">精神行为问题</view>
+          </view>
+          <view class="cp_item">
+            <image class="cp_line_1" src="/static/images/line_1.png" />  
+          </view>
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_3.png" />   
+            <view class="cp_text">安全风险问题</view>
+          </view>
+          <view class="cp_item">
+            <image class="cp_line_1" src="/static/images/line_1.png" />  
+          </view>
+          <view class="cp_item">
+            <image class="cp_icon" src="/static/images/cp_4.png" />   
+            <view class="cp_text">居住环境评估</view>
+          </view>
+        </view>
+
+        <view class="btn_group_box">
+           <button class="btn_clean btn_common btn_1" bindtap="get_history_list" hover-class="btn_hover">看以往记录</button>
+           <button class="btn_clean btn_common btn_2"  bindtap="go_jump" data-url="../evaluation_one/evaluation_one"  hover-class="btn_hover">开始测评</button>
+        </view>
+
+    </view>
+
+  </view> 

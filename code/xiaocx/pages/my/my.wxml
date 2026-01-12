@@ -1,0 +1,117 @@
+<!--  -->
+<view class="layout_page" wx:if="{{user_info.age }}">
+    <!-- 胶囊区域 -->
+    <view class="nav_top pl30 {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px">
+
+        <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+        <view class="my_title">我的记录</view>
+    </view>
+
+    <view class="header_box" style="background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;">
+        <view class="header_inner_box">
+
+            <view class="common_bg_box hzxx_box" bindtap="go_hzxx">
+                <view class="hzxx_top_box d_flex">
+                    <view class="name_title">患者信息</view>
+                    <image class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+                </view>
+                <view class="hz_desc_box">
+                    <view class="sex_age_text_box flex">
+                        <view class="sex_age_text sex_age_text_after">{{user_info.patient_gender_name}}</view>
+                        <view class="sex_age_text sex_age_text_after">{{user_info.patient_age}}岁</view>
+                        <view class="sex_age_text">{{user_info.patient_education_name}}</view>
+                    </view>
+                    <view class="miaoshu_text">{{user_info.patient_disease_type_name}}（{{user_info.patient_illness_name}}）</view>
+                   <view class="miaoshus_img" wx:if="{{user_info.bead_house_title}}"> <image src="../../img/home.png" alt=""/> <view class="miaoshu_text">{{user_info.bead_house_title}}</view></view>
+                </view>
+            </view>
+
+            <view class="common_bg_box hzxx_box" bindtap="go_hzxx" data-type='2' style="height: 300rpx;">
+                <view class="hzxx_top_box d_flex" style="margin-top:0rpx;">
+                    <view class="name_title">照护者信息</view>
+                    <image class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+                </view>
+                <view class="hz_desc_box">
+                    <view class="sex_age_text_box flex">
+                        <view class="sex_age_text sex_age_text_after">{{user_info.gender_name}}</view>
+                        <view class="sex_age_text sex_age_text_after">{{user_info.age}}岁</view>
+                        <view class="sex_age_text">{{user_info.education_name}}</view>
+                    </view>
+
+                    <view class="sex_age_text_box flex">
+                        <view class="sex_age_text sex_age_text_after">{{user_info.live_name == '是' ? '同住' : '不同住'}}</view>
+                        <view class="sex_age_text sex_age_text_after">{{user_info.relation_name}}</view>
+                        <view class="sex_age_text">{{user_info.care_years_name}}照顾经验</view>
+                    </view>
+
+                </view>
+            </view>
+
+        </view>
+    </view>
+
+
+    <view class="project_list_box">
+        <view class="tab_menu_box">
+            <view class="tab_menu_item">历史照护方案记录</view>
+        </view>
+
+        <view class="zgjl_wrapper">
+            <view class="list_innner_box" wx:for="{{history_list}}" wx:key="create_time">
+                <view class="data_item flex">
+                    <image class="date_icon" src="/static/images/date_icon.png" />
+                    <text class="date_text">{{item.create_time}}</text>
+                </view>
+
+                <view class="common_bg_box zjxx_box" wx:for="{{item.data_list}}" wx:for-item="data_list" wx:key="id">
+                    <view class="zjxx_top_box d_flex">
+                        <view class="zjxx_top_left_box flex" bindtap="go_detail" data-id="{{data_list}}">
+                            <image class="zj_avtar" src="{{data_list.expert_avatar}}" />
+                            <view class="zj_name">{{data_list.expert_name}}</view>
+                        </view>
+
+                        <view bindtap="go_pingjia" data-id="{{data_list.id}}" class="pj_btn_box" wx:if="{{data_list.status == 3 && data_list.is_evaluate == 2}}">
+                            <image class="pj_btn_icon" src="/static/images/pj_btn_icon.png" />
+                            <text class="pj_btn_text">点击评价</text>
+                        </view>
+
+                        <view bindtap="go_guanai" data-id="{{data_list.id}}" class="pj_btn_box" wx:if="{{data_list.status == 3 && data_list.is_evaluate == 1 &&  data_list.is_join_research == 2}}">
+                            <!-- <image class="pj_btn_icon" src="/static/images/pj_btn_icon.png" /> -->
+                            <text class="pj_btn_text">参加关爱计划</text>
+                        </view>
+
+                        <image wx:if="{{ (data_list.status == 3 && data_list.is_evaluate  == 1  && data_list.is_join_research  == 1) || data_list.status < 3  || (data_list.status == 3 && data_list.is_evaluate  == 3  && data_list.is_join_research  == 2) }}" bindtap="go_detail" data-id="{{data_list}}" class="right_jt_icon" src="/static/images/right_jt_icon.png" />
+
+                    </view>
+
+
+                    <view class="zj_common_status pgz " wx:if="{{data_list.status == 1 || data_list.status == 2}}" bindtap="go_detail" data-id="{{data_list}}">
+                        <image class="clock_icon" src="/static/images/red_clock_icon.png" />
+                        <view class="zj_pgz_right">
+                            <view class="pg_text color_red">专家评估中</view>
+                            <view class="pg_text color_red">{{data_list.status_title}}</view>
+                        </view>
+                    </view>
+
+                    <view class="zj_common_status pgwc" wx:if="{{data_list.status == 3}}" bindtap="go_detail" data-id="{{data_list}}">
+                        <image class="clock_icon" src="/static/images/green_clock_icon.png" />
+                        <view class="zj_pgz_right">
+                            <view class="pg_text color_green">专家方案已评估完成</view>
+                        </view>
+                    </view>
+
+                    <view class="zhwt_list_wrapper" bindtap="go_order" data-id="{{data_list}}">
+                        <view class="zhwt_title">照护问题</view>
+                        <view class="zhwt_list_box">
+                            <view class="zhwt_item" wx:for="{{data_list.evalustion}}" wx:for-item="evalustion" wx:key="id"> {{evalustion.name}}</view>
+                        </view>
+
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

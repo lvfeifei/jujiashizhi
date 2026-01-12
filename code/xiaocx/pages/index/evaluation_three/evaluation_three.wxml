@@ -1,0 +1,48 @@
+<wxs module="filters" src="../../../wxs/filter.wxs"></wxs>
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   
+      <view class="my_title">测评</view> 
+    </view> 
+ 
+    <view class="header_box" style="  background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: cover ;"> 
+      <view class="inner_content">
+        <view class="top_title_box">
+          <view class="number_box">3</view>
+          <view class="top_title_text">安全风险问题</view>
+        </view>
+        <view class="bottom_title_text">请勾选近2周发生过的问题【可多选】</view>
+      </view>
+    </view> 
+
+    <view class="progress_box">
+      <view class="progress_inner w50"> 50% </view>
+    </view>
+
+    <view class="desc_wrapper"> 
+        <view class="desc_title">安全风险</view>
+      <view class="anli_list_box anli_list_box_flex">
+
+        <view class="anli_item_box" wx:for="{{question_list[0].options}}" wx:key="id" for-index="i" data-index="0" wx:for-item="itemName" bindtap="click_item" data-pid="{{question_list[0].id}}"  data-item="{{itemName}}" data-classify_id="{{question_list[0].classify_id}}"> 
+            <!-- <image class="anli_img" src="{{filters.get_picture(itemName.picture)}}" alt=""/> -->
+            <!-- <view class="anli_mask"></view> -->
+            <image class="anli_check_img" src="/static/images/{{filters.check_item_one_arr(question,itemName) ? 'check_1' : 'no_check_1'}}.png" /> 
+            <view class="ali_text">{{itemName.name}}</view>  
+          </view>
+ 
+      </view>
+        
+    </view>
+ 
+   <view class="btn_group_wrpaer">
+    <view class="btn_group_box">
+        <button class="btn_clean btn_common btn_1" bindtap="go_back" hover-class="btn_hover">上类问题</button>
+        <button class="btn_clean btn_common btn_2" bindtap="go_jump" hover-class="btn_hover" data-url="../evaluation_four/evaluation_four"  data-number="1"  >下类问题</button>
+      </view>  
+   </view>
+ 
+  </view> 

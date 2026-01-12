@@ -1,0 +1,28 @@
+<import src="../../../wxParse/wxParse.wxml"  /> 
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>  
+
+      <view class="my_title">居家失智照护辅助系统</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+        <view class="article_title">{{data.title}}</view> 
+        <view class="content_text">  
+        <view class="video_box"  wx:if="{{data.video}}">
+            <video style="width: 100%;height:  100%;" src="{{data.video}}"></video>
+        </view>
+       <!-- <rich-text nodes="{{data.content}}"></rich-text> -->
+
+        <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+        </view>
+    </view>
+
+  </view> 
