@@ -133,10 +133,17 @@ Page({
                // 需要等待
             //   wx.navigateTo({
             //     url: '../evaluation_wait/evaluation_wait',
-            //   }) 
+            //   })
+            if (data.sendtime == null) {
+              wx.reLaunch({
+                url: '../evaluation_wait_expert/evaluation_wait_expert',
+              })
+            } else {
               wx.reLaunch({
                 url: '../evaluation_wait/evaluation_wait',
               })
+            }
+              
             }else{
               // 不需要等待
             //   wx.navigateTo({

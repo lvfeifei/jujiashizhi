@@ -25,7 +25,8 @@
         "pages/my/diaocha_taidu/diaocha_taidu",
         "pages/my/diaocha_wancheng/diaocha_wancheng",
         "pages/my/diaocha_luyin/diaocha_luyin",
-        "pages/auth/auth"
+        "pages/auth/auth",
+        "pages/index/evaluation_wait_expert/evaluation_wait_expert"
     
     ],
     "useExtendedLib": {

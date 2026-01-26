@@ -1,0 +1,35 @@
+<view class="layout_page">
+    <!-- 胶囊区域 -->
+    <view class="nav_top pl30 {{fixs ? 'bg_primary' : '' }} " style="padding-top:{{top / 2}}px; line-height:{{nav_height}}px"> 
+
+    <!-- <view class="flex_left_box" bindtap="go_back" style="line-height:{{nav_height}}px;">
+      <image class="flex_left_icon" src="/static/images/header_right_icon.png" />   
+    </view>   -->
+
+      <view class="my_title">测评</view> 
+    </view> 
+ 
+    <view class="header_box" style="height: {{nav_height + 10}}px; background:url('https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/zixun/3831660634598.png') no-repeat; background-size: 100% 100% ;"> 
+    </view> 
+
+    <view class="desc_wrapper">
+
+    <view class="content_inner_box" wx:if="{{zhuajia_img}}">
+      <image class="zj_img" src="{{zhuajia_img}}" />    
+      <view class="article_title">已完成照护问题评估</view>
+      <view class="tip_text_box">
+        <view class="tip_text">专家将为您制定个性化的照护方案</view> 
+        <view class="tip_text">请等待微信通知查看</view>
+      </view>
+
+      <view class="btn_box">
+        <button class="btn_clean btn_common btn_1" hover-class="btn_hover" bindtap="get_history_list">看以往记录</button>
+        <button class="btn_clean btn_common btn_1" hover-class="btn_hover" bindtap="go_index">回到首页</button>
+      </view>
+   
+       
+    </view>
+      
+    </view>
+
+  </view> 
