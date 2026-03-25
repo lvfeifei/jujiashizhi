@@ -32,11 +32,14 @@ return [
     //小程序token
     'xiaocx_token_url'=> 'http://token-api.xiaocx.cc/api/index/get_token',
     'xiaocx_token_key' => '343621b98a2698d7a8c5187ce8da79a2',
+    'wx_token_url' => 'https://api.weixin.qq.com/cgi-bin/token',
     //send发送订阅通知
     'xiaocx_send_url' => 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send',
     //小程序配置信息
-    'xiaocx_app_id' => 'wx7b5d52c7b82d3e4a',     //'wxbd84b137d77acee3',
-    'xiaocx_app_secret' => 'eff8b8a672f85e5574ba9f971542ed84',        //'a7d1c6b002b453bbc80712ed046a4417',
+    // 'xiaocx_app_id' => 'wx7b5d52c7b82d3e4a',     //'wxbd84b137d77acee3',
+    // 'xiaocx_app_secret' => 'eff8b8a672f85e5574ba9f971542ed84',        //'a7d1c6b002b453bbc80712ed046a4417',
+    'xiaocx_app_id' => 'wxac51d857f3db3f9c',     //'wxbd84b137d77acee3',
+    'xiaocx_app_secret' => '2d44b981c05952cfb0fbe77d7693e9fa',
     'xiaocx_url'=>'https://api.weixin.qq.com/sns/jscode2session',
 
     'expiration_time' =>10080,

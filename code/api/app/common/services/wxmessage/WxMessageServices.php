@@ -8,6 +8,7 @@
  */
 namespace app\common\services\wxmessage;
 use app\common\services\BaseServices;
+use think\Log;
 
 class WxMessageServices extends BaseServices
 {
@@ -42,6 +43,36 @@ class WxMessageServices extends BaseServices
             $submitData = json_encode($dataInfo);
 
             $res = http_curl($send_url, 'post', $submitData);
+
+            return $res;
+        }else{
+            return $info;
+        }
+
+    }
+
+    public function wx_message_new($touser,$template_id,$page,$data)
+    {
+
+        //获取access_token
+        $url = config('wx_token_url').'?grant_type=client_credential&appid='.config('xiaocx_app_id').'&secret='.config('xiaocx_app_secret');
+        $info = http_curl($url, 'get');
+
+        if(isset($info['access_token']) && !empty($info['access_token'])){
+            //send发送订阅通知
+            $send_url = config('xiaocx_send_url').'?access_token='.$info['access_token'];
+
+            $dataInfo = array(
+                'touser' => $touser,
+                'template_id' => $template_id,
+		 'miniprogram_state' => 'trial',
+                'page' => $page,
+                'data' => $data
+            );
+            $submitData = json_encode($dataInfo);
+
+            $res = http_curl($send_url, 'post', $submitData);
+	    Log::record('[WxMessageServices log]' . $submitData, 'info');
 
             return $res;
         }else{

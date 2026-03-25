@@ -95,7 +95,7 @@ class CareAdviceServices extends BaseServices
         array_push($headers, "Content-Type: text/plain");
 
 
-        $res = curl('http://43.138.62.172:9898/expert_interaction',$postjson,1,$headers);
+        $res = curl('http://www.nurseadvicetest.xyz:9898/expert_interaction',$postjson,1,$headers);
         $list = [];
         if($res !== false) {
             if ($res['code'] == 200) {
