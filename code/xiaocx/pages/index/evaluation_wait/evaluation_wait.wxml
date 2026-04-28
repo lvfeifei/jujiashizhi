@@ -19,7 +19,9 @@
       <view class="article_title">已完成照护问题评估</view>
       <view class="tip_text_box">
         <view class="tip_text">专家将为您制定个性化的照护方案</view> 
-        <view class="tip_text">次日<text class="color_red">{{sendtime}}</text>微信通知查看</view> 
+        <view wx:if="{{sendtime}}" class="tip_text">次日<text class="color_red">{{sendtime}}</text>微信通知查看</view>
+        <view wx:else class="tip_text">请等待微信通知查看</view>
+        <!-- <view class="tip_text">次日<text class="color_red">{{sendtime}}</text>微信通知查看</view>  -->
       </view>
 
       <view class="btn_box">

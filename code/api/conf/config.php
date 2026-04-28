@@ -32,6 +32,7 @@ return [
     //小程序token
     'xiaocx_token_url'=> 'http://token-api.xiaocx.cc/api/index/get_token',
     'xiaocx_token_key' => '343621b98a2698d7a8c5187ce8da79a2',
+    'wx_token_url' => 'https://api.weixin.qq.com/cgi-bin/token',
     //send发送订阅通知
     'xiaocx_send_url' => 'https://api.weixin.qq.com/cgi-bin/message/subscribe/send',
     //小程序配置信息

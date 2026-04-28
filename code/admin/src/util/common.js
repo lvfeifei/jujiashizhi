@@ -6,7 +6,8 @@ const img_url = 'https://jujiashizhi-1315324619.cos.ap-beijing.myqcloud.com/'
 
 //定义全局变量
 // const api_url = 'https://jujiashizhi-api.xiaocx.cc/admin';
- const api_url = 'http://jujiashizhi-admin.syncsmart.cn/admin';
+// const api_url = 'http://jujiashizhi-admin.syncsmart.cn/admin';
+const api_url = 'https://shizhizhaohu.kangyang.online/admin';
 
  
 const token = '';

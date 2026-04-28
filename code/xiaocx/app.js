@@ -3,7 +3,8 @@ const qiniuUploader = require("/utils/qiniuUploader");
 const QQMapWX = require('/utils/qqmap-wx-jssdk.min.js'); 
 App({
     // parse: WxParse 
-    api_url: 'https://jujiashizhi-api.syncsmart.cn/api',                      // 正式地址 
+    // api_url: 'https://jujiashizhi-api.syncsmart.cn/api',                      // 正式地址 
+    api_url: 'https://shizhizhaohu.kangyang.online/api',      // 移动云（新地址）
     upload_percent: 0,                                          // 七牛云上传进度
     is_upload: false,                                           // 上传状态
     call_back_fun: '', // 回调方法

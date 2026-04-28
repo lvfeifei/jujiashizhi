@@ -24,6 +24,7 @@ use app\common\services\familyrelation\FamilyRelationServices;
 use app\common\services\user\UserServices;
 use app\common\services\evaluationcapability\EvaluationCapabilityServices;
 use app\common\model\EvaluationCapabilityOptions;
+use app\common\services\wxmessage\WxMessageServices;
 
 use Prophecy\Exception\Exception;
 use think\Db;
@@ -75,7 +76,8 @@ class OrderServices extends BaseServices
         $orderInfo['status_title'] = '';
         if($orderInfo['status']==1 || $orderInfo['status']==2){
 
-            $orderInfo['status_title'] = '预计'.date('d日',$orderInfo['confirm_send_time']).is_am_pm(date('a',$orderInfo['confirm_send_time'])).date('H:i',$orderInfo['confirm_send_time']).'完成';
+            // $orderInfo['status_title'] = '预计'.date('d日',$orderInfo['confirm_send_time']).is_am_pm(date('a',$orderInfo['confirm_send_time'])).date('H:i',$orderInfo['confirm_send_time']).'完成';
+            $orderInfo['status_title'] = '预计次日'.is_am_pm(date('a',$orderInfo['confirm_send_time'])).date('H:i',$orderInfo['confirm_send_time']).'完成';
         }
         if($orderInfo['status']==3){
             $orderInfo['status_title'] = '专家方案已评估完成';
@@ -266,10 +268,14 @@ class OrderServices extends BaseServices
         if($orderProgramList){
             foreach($orderProgramList as $programItem){
                 $content = json_decode($programItem['content'],true);
+                if ($content == '无') continue;
                 $orderProgramstr .= '“'.$content.'”，';
             }
 
             $orderProgramstr = rtrim($orderProgramstr,'，');
+            if ($orderProgramstr == ''){
+               $orderProgramstr = '“无”';
+            }
         }else{
             $orderProgram =[];
         }
@@ -623,8 +629,16 @@ class OrderServices extends BaseServices
                 $result = $configModel->where('key',$key)->value('value');
                 $sendTime = $result;
             }
+
+            /*
             $stime = strtotime($sendTime)+86400;
             if($patientData['create_time']){
+                $stime = strtotime($sendTime,$patientData['create_time'])+86400;
+            }
+            */ 
+
+            $stime = $patientData['create_time'];
+            if ($sendTime != null && $sendTime != '') {
                 $stime = strtotime($sendTime,$patientData['create_time'])+86400;
             }
 
@@ -1842,6 +1856,7 @@ class OrderServices extends BaseServices
     public function admin_order_program_save($orderId,$data)
     {
 
+        $WxMessageServices = new WxMessageServices();
         $orderInfo = $this->model->where('id',$orderId)->find();
         if(!$orderInfo)return res_data(0,'该工单不存在');
 
@@ -1872,10 +1887,16 @@ class OrderServices extends BaseServices
             $sendTime = $result;
         }
         // $stime = strtotime($sendTime)+86400;
-        $stime = strtotime($sendTime,time())+86400;
+        // $stime = strtotime($sendTime,time())+86400;
         // if($orderInfo['create_time']){
         //     $stime = strtotime($sendTime,$orderInfo['create_time'])+86400;
         // }
+        
+        $stime = time();
+        if ($sendTime != null && $sendTime != '') {
+            $stime = strtotime($sendTime,time())+86400;
+        }
+
         $updataDatePush = [];
         $orderProgramInfo = [];
         if($data){
@@ -1985,11 +2006,36 @@ class OrderServices extends BaseServices
                 $orderProgramModel->where('id',$dataitem['id'])->where('order_id',$orderId)->update($updateData);
             }
 
-                //需专家确认后发送  指定发送时间
-                $order_update_date['status'] = 2;
-                $order_update_date['confirm_send_time'] = $stime;  //专家确认时间
-                $order_update_date['evaluate_start_time'] =$stime+7*86400; //评价发送时间   专家确认发送时间加7天
-                $this->model->where('id',$orderId)->update($order_update_date);
+            //需专家确认后发送  指定发送时间
+            $order_update_date['status'] = 2;
+            if ($sendTime == null || $sendTime == '') {
+               $userServices = new UserServices();
+               $user = $userServices->model->where('id',$orderInfo['user_id'])->field('id,openid')->find();
+               $touser = $user['openid'];
+               $template_id = 'cHvEcSyo84oy7o1iW60Ij09EfELCgBoLSIb6UvNDsLc';
+               $page = '/pages/my/zhfa/zhfa?id=' . $orderInfo['id'];
+               $data = [
+                   'thing1' => ['value' => '失智老人照护方案'],
+                   'thing4' => ['value' => '您的照护方案已生成，请前往小程序查看'],
+               ];
+
+               $res_message = $WxMessageServices->wx_message_new($touser,$template_id,$page,$data);
+               $message_log_data = [
+                   'order_id' => $orderInfo['id'],
+                   'user_id' => $orderInfo['user_id'],
+                   'title' => '健康管理方案通知',
+                   'template_id' => $template_id,
+                   'page' => $page,
+                   'data' =>json_encode($data),
+                   'log' =>json_encode($res_message)
+               ];
+
+               Db::name('wx_message_log')->insert($message_log_data);
+               $order_update_date['status'] = 3;
+            }
+            $order_update_date['confirm_send_time'] = $stime;  //专家确认时间
+            $order_update_date['evaluate_start_time'] =$stime+7*86400; //评价发送时间   专家确认发送时间加7天
+            $this->model->where('id',$orderId)->update($order_update_date);
 
 
             Db::commit();

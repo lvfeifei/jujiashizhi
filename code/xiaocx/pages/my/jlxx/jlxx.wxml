@@ -15,10 +15,9 @@
 
           <view class="pgz_box flex">
             <image class="pgz_icon" src="/static/images/pgz_icon.png" />   
-            <view class="pg_title" wx:if="{{patient.status === 1}}">专家评估中</view>
-            <view class="pg_title" wx:else>{{patient.status_title}}</view>
+            <view class="pg_title" >专家评估中</view>
           </view>   
-          <view class="pg_tip_text" wx:if="{{patient.status === 1}}">{{patient.status_title}}</view>
+          <!-- <view class="pg_tip_text" wx:if="{{patient.status === 1}}">{{patient.status_title}}</view> -->
            
       </view>
     </view>

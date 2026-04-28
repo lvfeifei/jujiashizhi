@@ -1,0 +1,19 @@
+*/5 * * * * flock -xn /tmp/stargate.lock -c '/usr/local/qcloud/stargate/admin/start.sh > /dev/null 2>&1 &'
+
+
+
+# 资讯文章定时上架
+*/1 * * * * /usr/bin/curl https://jujiashizhi-api.syncsmart.cn/admin/command/help_updata_status
+
+# 工单照护方案将待发送状态修改已发送
+*/1 * * * * /usr/bin/curl https://jujiashizhi-api.syncsmart.cn/admin/command/order_updata_status
+
+#  工单状态修改为可评价状态
+*/1 * * * * /usr/bin/curl https://jujiashizhi-api.syncsmart.cn/admin/command/order_updata_evaluate
+
+#照护方案发送失败 重新发送
+*/5 * * * * /usr/bin/curl http://jujiashizhi-admin.syncsmart.cn/admin/command/order_send_program
+
+
+#专家互动未读消息推送
+*/1 * * * * /usr/bin/curl http://jujiashizhi-admin.syncsmart.cn/admin/command/user_chat

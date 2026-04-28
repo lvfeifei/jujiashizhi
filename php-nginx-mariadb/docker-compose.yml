@@ -1,0 +1,57 @@
+services: 
+  nginx: 
+    image: nginx:1.20.1-alpine  # 明确指定版本号
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../code:/htdocs/jujiashizhi
+      - ./nginx/cert:/etc/nginx/cert
+      #- ./nginx/jujiashizhi.syncsmart.cn.conf:/etc/nginx/conf.d/jujiashizhi.syncsmart.cn.conf
+      - ./nginx/shizhizhaohu.kangyang.online.conf:/etc/nginx/conf.d/default.conf
+      - ./logs:/var/log/nginx
+    depends_on:
+      - php
+    environment:
+      - TZ=Asia/Shanghai
+    networks:
+      - app-network
+
+  # PHP 服务 (FPM)
+  php:
+    build: ./php
+    volumes:
+      - ../code:/htdocs/jujiashizhi          # 业务代码挂载（代码不变）
+      #- ./config:/var/www/config     # 配置文件挂载（核心！将宿主机 config 目录挂载到容器内）
+    depends_on:
+      - mariadb
+    # 移除 PHP 的 environment（不再需要，配置文件已替代）
+    networks:
+      - app-network
+
+ # MariaDB 服务
+  mariadb:
+    image: mariadb:10.4
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql  # 🌟 关键：挂载初始化脚本
+      - ./tmp:/var/www/tmp
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwert12345  # 如：Root@123456
+      - TZ=Asia/Shanghai
+      #- MYSQL_USER=jujiashizhi
+      #- MYSQL_PASSWORD=17188c5fdee5692e
+    ports:
+      - "3306:3306"    #如果宿主机的端口不是3306，小程序会报连接不
+    networks:
+      - app-network
+    restart: always
+    #就加这一行！104857600 = 100M
+    command: --max_allowed_packet=104857600
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mariadb-data:

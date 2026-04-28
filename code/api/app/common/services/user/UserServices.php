@@ -206,7 +206,8 @@ class UserServices extends BaseServices
                 if($item['status']==1 || $item['status']==2){
 
                     // $item['status_title'] = '预计'.date('d日',$item['confirm_send_time']).is_am_pm(date('a',$item['confirm_send_time'])).date('H:i',$item['confirm_send_time']).'完成';
-                    $item['status_title'] = '预计次日'.is_am_pm(date('a',$item['confirm_send_time'])).date('H:i',$item['confirm_send_time']).'完成';
+                    // $item['status_title'] = '预计次日'.is_am_pm(date('a',$item['confirm_send_time'])).date('H:i',$item['confirm_send_time']).'完成';
+                    $item['status_title'] = '';
 
                 }
                 if($item['status']==3){
