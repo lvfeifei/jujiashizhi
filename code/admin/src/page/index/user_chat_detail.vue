@@ -189,6 +189,28 @@
  
             </div>
         </el-card>
+       <!-- 右下角悬浮搜索卡片 el-card -->
+      <el-card  shadow="hover">
+      <h4>graphrag推荐方案</h4>
+      <!-- 搜索输入框 + 按钮行 -->
+      <div class="search-bar">
+        <el-input
+          v-model="question_str"
+          placeholder="请输入问题搜索"
+        >
+          <template slot="prefix">
+            <i class="el-icon-search"></i>
+          </template>
+        </el-input>
+        <el-button type="primary" icon="el-icon-search" @click="graphrag_search" :loading="loading">
+          搜索
+        </el-button>
+      </div>
+
+      <!-- 搜索结果展示区域 -->
+      <div class="result-markarea" v-if="advice" v-html="renderedAdvice">
+      </div>
+    </el-card>
     </div>
 
   </div>
@@ -252,7 +274,10 @@
   height: 679px; 
 }
 
-.el-card,
+.el-card{
+  height: 50%; 
+}
+
 .el-card__body {
   height: 100%; 
 }
@@ -547,5 +572,125 @@
 .user_info_box .user_box .user_phone {
   font-size: 14px;
   color: #959a9f;
+}
+/* 输入框+按钮横向布局 */
+.search-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.search-bar .el-input {
+  flex: 1;
+}
+
+/* 结果区域样式 */
+.result-area {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #ebeef5;
+}
+.result-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #303133;
+}
+.result-item {
+  padding: 6px 0;
+  color: #606266;
+  border-bottom: 1px dashed #eee;
+}
+
+/* 为渲染的 Markdown 添加样式 */
+.result-area {
+  margin-top: 16px;
+  padding: 12px;
+  background: #f5f7fa;
+  border-radius: 4px;
+  line-height: 1.8;
+}
+
+/* Markdown 元素样式 */
+.result-markarea h1,
+.result-markarea h2,
+.result-markarea h3,
+.result-markarea h4 {
+  margin: 16px 0 8px 0;
+  font-weight: 600;
+}
+
+.result-markarea h1 { font-size: 24px; }
+.result-markarea h2 { font-size: 20px; }
+.result-markarea h3 { font-size: 18px; }
+.result-markarea h4 { font-size: 16px; }
+
+.result-markarea p {
+  margin: 8px 0;
+}
+
+.result-markarea ul,
+.result-markarea ol {
+  padding-left: 24px;
+  margin: 8px 0;
+}
+
+.result-markarea code {
+  background: #e8ecf1;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.result-markarea pre {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.result-markarea pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+.result-markarea blockquote {
+  border-left: 4px solid #409eff;
+  padding-left: 12px;
+  margin: 8px 0;
+  color: #666;
+}
+
+.result-markarea table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+}
+
+.result-markarea th,
+.result-markarea td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.result-markarea th {
+  background: #f0f2f5;
+  font-weight: 600;
+}
+
+.result-markarea a {
+  color: #409eff;
+  text-decoration: none;
+}
+
+.result-markarea a:hover {
+  text-decoration: underline;
+}
+
+.result-markarea img {
+  max-width: 100%;
+  height: auto;
 }
 </style>

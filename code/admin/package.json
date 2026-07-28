@@ -20,6 +20,7 @@
     "js-cookie": "^3.0.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "marked": "^3.0.0",
     "npm": "^5.10.0",
     "package": "^1.0.1",
     "quill": "^2.0.0-dev.4",

@@ -159,4 +159,37 @@ class CareAdviceServices extends BaseServices
 
     }
 
+    public function get_graphrag_advice($user_id, $question)
+    {
+       
+        // 先不使用患者信息
+        $chatRequest['session_id'] = $user_id . '';
+        $chatRequest['question'] = $question;
+        // $chatRequest['reset_session'] = true;
+        $postjson = json_encode($chatRequest);
+        $headers = array();
+
+        array_push($headers, "Content-Type: application/json");
+
+
+        $res = curl('http://36.212.173.204:8000/chat',$postjson,1,$headers);
+        $answer['answer'] = "";
+
+        if($res !== false) {
+            if ($res['code'] == 200) {
+                $careInfo = json_decode($res['data'], true);
+                $answer['answer'] = $careInfo['answer_md'];
+            }
+
+        }
+        
+        $data = [];
+        $data['user_id'] = $user_id;
+        $data['option_id'] = $question;
+        $data['request_time'] = time();
+        Db::name('user_search_log')->insert($data);
+        return res_data(1,'请求成功', $answer);
+
+    }
+
 }

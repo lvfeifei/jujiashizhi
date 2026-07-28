@@ -35,4 +35,15 @@ class CareAdvice extends Basic
         if(!$ids)json_success(res_data(0,'请选择问题选项'));
         json_success($this->services->get_advice($user_id,$ids));
     }
+
+    public function graphrag_advice()
+    {
+        $user_id = $this->request->post('user_id/d',0);
+        if(empty($user_id)){
+           json_fail('用户id不能为空');
+        }
+        $question = $this->request->post('question/s', '');
+        if(!$question)json_success(res_data(0,'请输入问题'));
+        json_success($this->services->get_graphrag_advice($user_id,$question));
+    }
 }

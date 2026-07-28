@@ -1,5 +1,6 @@
 let timer = null;
 import commJS from '../common.js';
+import marked from 'marked';
 
 const data = [{
     id: 1,
@@ -30,7 +31,6 @@ const data = [{
     }]
   }];
 
-
 export default {
     data() {
         return {
@@ -54,7 +54,10 @@ export default {
             advice_list:[],    // 问题答案的列表
             data: JSON.parse(JSON.stringify(data)),
             last_length:0,
-            is_update:true
+            is_update:true,
+            question_str: '',
+            loading: false,
+            advice: '' // 原始 Markdown 文本
         }
     },
 
@@ -65,6 +68,22 @@ export default {
             ele.scrollTop = ele.scrollHeight;
         } 
     },
+    computed: {
+    // 计算属性将 Markdown 转为 HTML
+    renderedAdvice() {
+      if (!this.advice) return ''
+      
+      // 使用 marked
+      return marked(this.advice, {
+        breaks: true,        // 将换行转为 <br>
+        gfm: true,          // 启用 GitHub 风格 Markdown
+        sanitize: false     // 不转义 HTML（如果你的内容可信）
+      })
+      
+      // 如果使用 markdown-it，则改为：
+      // return md.render(this.advice)
+    }
+  },
 
     /**
      * 进入页面加载
@@ -131,6 +150,38 @@ export default {
     
         },
       
+        // 从graphrag里检索答案  
+        async graphrag_search() {
+            let question = this.question_str
+            if(!question){
+                return this.$message.warning('请选择输入的问题!');
+            } 
+            if (this.loading) return;
+            console.log(this.loading);
+            this.loading = true;
+            try {
+                await this.axios.post("/care_advice/graphrag_advice",{
+                    user_id: this.user_id,
+                    question
+                   
+                },{
+                    emulateJSON: true
+                }).then(data => { 
+                    console.log(data) 
+                    if(data.status === 1){ 
+                        let advice = data.data['answer']  
+                        console.log('advice:', advice)
+
+                        this.advice = advice
+                    } 
+                }); 
+            } catch (err) {
+                console.error('搜索失败', err)
+            } finally {
+              // 无论成功失败，都解除禁用！【重点】
+              this.loading = false;
+            }
+        },
         /**
          * 获取问题选项列表
         */
