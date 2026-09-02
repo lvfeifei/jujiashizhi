@@ -70,6 +70,7 @@ Page({
             } else {
                 app.toast_none('录音时长过短！')
             }
+            that.get_new_chat();
         })
 
         app.backgroundAudioManager.onEnded(() => {
@@ -232,6 +233,10 @@ Page({
                 } else {
                     // 返回的 录音url   直接发送数据 res.data.imgurl  
                     that.send_message(res.data.imgurl, 3);
+                    // 增加转语音再请求graphrag进行回复
+                    console.log(res.data.imgurl);
+                    that.send_to_graphrag(res.data.imgurl, 3);
+                  
                 }
             }
         })
@@ -439,7 +444,24 @@ Page({
             }
         });
     },
-
+/**
+     * 发消息
+     * name:内容
+     * chat_type 1文本 2图片 3 录音
+     */
+send_to_graphrag: function (name, chat_type) {
+  var that = this;
+  app.post_ajax('/User_chat/reply_by_graphrag', {
+      // user_id: app.user_id,
+      content: name,
+      msg_type: chat_type
+  }, function (res, status) {
+      if (status != 200) {
+          app.toast_none("graphrag接口调用失败！")
+          app.hideLoading();
+      }
+  });
+},
     /**
      * 上拉加载更多
      */
@@ -479,6 +501,7 @@ Page({
                     return app.toast_none('发送内容不能为空')
                 }
                 that.send_message(that.data.content, 1);
+                that.send_to_graphrag(that.data.content, 1);
                 that.setData({
                     content: '',
                     con_len: 0
