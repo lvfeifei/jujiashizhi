@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS `jujiashizhi` DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 grant all privileges on `jujiashizhi`.* to `jujiashizhi`@'%' identified by '17188c5fdee5692e';
+DROP USER 'root'@'%';
 
 flush privileges;
 

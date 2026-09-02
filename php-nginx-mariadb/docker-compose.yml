@@ -32,15 +32,15 @@ services:
  # MariaDB 服务
   mariadb:
     image: mariadb:10.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=qwert@1#2*3&45  # 如：Root@123456
+      - TZ=Asia/Shanghai
+      #- MYSQL_USER=jujiashizhi
+      #- MYSQL_PASSWORD=17188c5fdee5692e
     volumes:
       - mariadb-data:/var/lib/mysql
       - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql  # 🌟 关键：挂载初始化脚本
       - ./tmp:/var/www/tmp
-    environment:
-      - MYSQL_ROOT_PASSWORD=qwert12345  # 如：Root@123456
-      - TZ=Asia/Shanghai
-      #- MYSQL_USER=jujiashizhi
-      #- MYSQL_PASSWORD=17188c5fdee5692e
     ports:
       - "3306:3306"    #如果宿主机的端口不是3306，小程序会报连接不
     networks:

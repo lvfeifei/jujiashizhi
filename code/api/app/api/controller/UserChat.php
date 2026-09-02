@@ -154,6 +154,100 @@ class UserChat extends Basic
     }
 
     /**
+     *通过graphrag 大模型回复
+     */
+    public function reply_by_graphrag(){
+        $msg_type = input('msg_type',1);
+        $content = input('content');
+        $manger_id = 1;
+
+        $voice_time = input('voice_time/d',0);
+
+        if(strlen($content) == 0 ){
+                json_fail('内容不能为空');
+        }
+
+	// 语音先转换为文字
+	if ($msg_type == 3 || $msg_type == '3') {
+            $asrRequest['EngSerViceType'] = '16k_zh';
+            $asrRequest['SourceType'] = 0;
+            $asrRequest['VoiceFormat'] = 'ogg-opus';
+            $asrRequest['Url'] = $content;
+            $postjson = json_encode($asrRequest);
+            $headers = array();
+
+            array_push($headers, "Content-Type: application/json");
+
+
+            $res = curl('http://58.87.69.231:9596/asr/sentence_recognition',$postjson,1,$headers);
+	    if ($res !== false) {
+		if ($res['code'] == 200) {
+		    $info = json_decode($res['data'], true);
+		    $content = $info["data"]["Result"];
+		}
+	    }
+	    $msg_type = 1;
+
+	}
+
+        $user_id = $this->userId;
+
+        $chatRequest['session_id'] = $user_id . '';
+        $chatRequest['question'] = $content;
+        $postjson = json_encode($chatRequest);
+        $headers = array();
+
+        array_push($headers, "Content-Type: application/json");
+
+
+        $res = curl('http://36.212.173.204:8000/chat',$postjson,1,$headers);
+        $answer = "";
+
+        if($res !== false) {
+            if ($res['code'] == 200) {
+                $careInfo = json_decode($res['data'], true);
+                $answer = $careInfo['answer_md'];
+            }
+
+        }
+        $content = $answer;
+        $user_chart = new \app\common\model\UserChat();
+        //查询上一条时间
+        $create_time =$user_chart->where(array('user_id'=>$user_id))->order('create_time desc')->value('create_time');
+        $add_time = '';
+
+        //是否大于五分钟
+        if((time()-$create_time) >= 300){
+            $add_time = date('H:i');
+        }
+        if ((time()-$create_time) >= 24*60*60){
+            $add_time = date('Y-m-d H:i');
+        }
+
+        if($add_time){
+            $user_chart->insertGetId(array('user_id'=>$user_id,'type'=>2,'pid'=>$manger_id,'msg_type'=>0,'content'=>json_encode($add_time),'create_time'=>time()));
+        }
+
+        $add_data = array(
+            'user_id'=>$user_id,
+            'type'=>2,
+            'pid'=>$manger_id,
+            'msg_type'=>$msg_type,
+            'content'=>json_encode($content),
+            'voice_time' => $voice_time,
+            'create_time'=>time()
+        );
+
+        $chart_id = $user_chart->insertGetId($add_data);
+
+        if($chart_id  === false){
+            json_fail('回复失败');
+        }
+        json_success('回复成功');
+
+    }
+
+    /**
      *回复内容
      */
     public function reply_user(){
